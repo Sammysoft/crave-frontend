@@ -4,9 +4,9 @@ export const StyledObject = {
             fontFamily: 'Nunito',
             width: '90%',
             backgroundColor: 'white',
-            margin: '10px auto auto auto',
+            margin: '5vh auto auto auto',
             overflowY: 'scroll',
-            height: '60vh'
+            height: '60vh',
         },
         th:{
             color: 'black',
@@ -38,13 +38,13 @@ export const StyledObject = {
                 justifyContent: 'Space-between',
                 alignItems: 'flex-start',
                 height: '100vh',
-                backroundColor: '#f2f2f2'
+                backroundColor: '#f2f2f2',
         },
         rightbarWrapper: {
             flex: 6,
             justifyContent: 'space-between',
             alignItems: 'flex-start',
-            height: '20vh'
+            height: '20vh',
         },
         dashboardMenu: {
             fontFamily: 'Nunito',
@@ -412,6 +412,162 @@ export const StyledObject = {
         display: 'flex',
         justifyContent: 'space-between',
         cursor: 'pointer'
-    }
+    },
+
+    th:{
+        color: 'black',
+        fontWeight: '700',
+        padding: '10px',
+        textAlign: 'center',
+
+        },
+        td:{
+            padding: '20px',
+            textAlign:'center'
+        },te:{
+            width: '40%',
+            padding: '10px'
+        },
+        tr:{
+            borderTop: '1px solid #E5E5E5'
+        },
+        thead:{
+            backgroundImage: 'linear-gradient(180deg,rgba(255, 238, 209, 1), rgba(255, 251, 244, 0.05))',
+            backgroundSize: '100%',
+            backgroundRepeat: 'repeat',
+        },
+        completed:{
+            border: 'none',
+            borderRadius:'20px',
+            backgroundColor: '#FEC72E',
+            fontFamily: 'Nunito',
+            padding: '10px',
+            textAlign: 'center',
+            alignItems: 'center',
+            color: '#1A1A19',
+            fontWeight: '400'
+        },
+        pending:{
+            border: 'none',
+            borderRadius:'20px',
+            backgroundColor: '#717171',
+            fontFamily: 'Nunito',
+            padding: '10px',
+            textAlign: 'center',
+            alignItems: 'center',
+            color: '#FAFAFB',
+            fontWeight: '400'
+        },
+        cancelled:{
+            border: 'none',
+            borderRadius:'20px',
+            backgroundColor: '#BD0000',
+            fontFamily: 'Nunito',
+            padding: '10px',
+            textAlign: 'center',
+            alignItems: 'center',
+            color: '#FAFAFB',
+            fontWeight: '400'
+        },
+        messagesWrapper:{
+            position: 'fixed',
+            zIndex: '9999',
+            bottom: '10vh',
+            right: '5vh',
+            borderRadius: '50%',
+            backgroundColor: ' #FEC72E',
+            width: 'fit-content',
+            padding: '20px',
+            boxShadow: '-3px 3px 4px 2px rgba(192, 127, 7, 0.18)'
+        },
+        messages:{
+            padding: '5px',
+        },
+        storeMenu:{
+            backgroundColor: '#FFFFFF',
+            width: '65%',
+            margin:'auto',
+            height: '70vh',
+            margin: '5vh auto auto auto',
+            overflowY: 'scroll',
+            boxShadow: '0px 4px 10px 4px rgba(121, 121, 130, 0.15)',
+            borderRadius: '15px'
+        },
+        storeMenuContentWrapper:{
+            padding:'10px 20px'
+        },
+        storeMenuContentFields:{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'space-between',
+            width: '100%'
+        },
+        storeMenuFirstField: {
+            width: '30%',
+            padding: '20px'
+        },
+        storeMenuFirstField2: {
+            width: '50%',
+            padding: '20px'
+        },
+        storeMenuSecondField: {
+            width :'70%',
+            padding: '20px'
+        },
+        storeMenuSecondField2: {
+            width :'50%',
+            padding: '20px'
+        },
+        storeMenuInputField: {
+            border: 'none',
+            width: '90%',
+            borderBottom: '1px dashed #717171',
+            padding: '5px'
+        },
+        storeMenuChooseFileButton:{
+            border: '1px solid #717171',
+            color: '#717171',
+            fontSize: '14px',
+            padding: '5px',
+            borderRadius:'5px'
+        },
+        storeMenuLogoPicker:{
+            backgroundColor: '#FFFFFF',
+            borderRadius: '10px',
+            boxShadow: '0px 4px 10px 4px rgba(121, 121, 130, 0.15)',
+            height: '30vh',
+            width: '90%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'space-between',
+
+        },
+        storeMenuLogoDisplay: {
+            height: '80%',
+            width: '40%',
+            border:'1px dashed #717171',
+            alignSelf:'center',
+            margin: '10px'
+        },
+    storeMenuTextAreaField: {
+            width: '90%',
+            border: '1px dashed #717171',
+            padding: '5px',
+            height: '20vh'
+        },
+        storeMenuSaveSettingsWrapper:{
+            width: '100%',
+            justifyContent: 'right',
+            textAlign:'right'
+        },
+        storeMenuSaveSettingsButton:{
+            padding: '8px',
+            color: '#DB0000',
+            fontWeight: '700',
+            backgroundColor: '#FEB52E',
+            alignSelf: 'right',
+            margin: '5vh',
+            borderRadius: '5px'
+        }
 
 }

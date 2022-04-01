@@ -3,41 +3,11 @@ import Action from './action';
 import ProductDetails from './productDetails';
 import Search from './search';
 import Status from './status';
+import { StyledObject } from '../../StyleObject';
 
 const Menu = ()=>{
 
-    var StyledObject = {
-        mainMenu: {
-            fontFamily: 'Nunito',
-            width: '90%',
-            backgroundColor: 'white',
-            margin: '10px auto auto auto',
-            overflowY: 'scroll',
-            height: '60vh'
-        },
-        th:{
-            color: 'black',
-            fontWeight: '700',
-            padding: '10px',
-            textAlign: 'center',
 
-            },
-            td:{
-                padding: '10px',
-                textAlign:'center'
-            },te:{
-                width: '40%',
-                padding: '10px'
-            },
-            tr:{
-                borderTop: '1px solid #E5E5E5'
-            },
-            thead:{
-                backgroundImage: 'linear-gradient(180deg,rgba(255, 238, 209, 1), rgba(255, 251, 244, 0.05))',
-                backgroundSize: '100%',
-                backgroundRepeat: 'repeat',
-            }
-        }
     return(
         <>
                 <Search />

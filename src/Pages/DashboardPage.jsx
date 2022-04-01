@@ -5,7 +5,6 @@ import Dashboard from "../Components/Dashboard";
 const Dashboard =()=>{
     return(
         <>
-
              <Dashboard />
         </>
     )

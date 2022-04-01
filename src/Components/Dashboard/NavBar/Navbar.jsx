@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Messages from '../../messages'
 
 let StyleObject = {
     dashboardNav: {
@@ -53,6 +53,7 @@ const NavBar =(props)=>{
 
     return(
         <>
+            <Messages />
             <div style={StyleObject.dashboardNav}>
                 <span style={StyleObject.wrap}>
                     <span style={StyleObject.left}>

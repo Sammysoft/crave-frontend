@@ -13,7 +13,7 @@ const Offer =(props)=>{
         {
             id: 1,
             title: "Table Reservation",
-            content: "make resrvations before you get to your destination",
+            content: "make reservations before you get to your destination",
             url: url
         },
         {
@@ -33,7 +33,7 @@ const Offer =(props)=>{
         {
             id: 4,
             title: "No more wait list",
-            content: "make resrvations before you get to your destination",
+            content: "make reservations before you get to your destination",
             url: url4
         },
 
