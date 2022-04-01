@@ -1,0 +1,38 @@
+a:hover{
+    cursor: pointer
+}
+
+span:hover{
+    cursor: pointer;
+}
+.link, .link:hover{
+    text-decoration: none;
+    text-decoration-line: none;
+    /* color: 'rgba(26, 26, 25, 1)'; */
+    padding-left: '5px';
+    padding: '5px'
+}
+h4{
+    color: 'rgba(0, 0, 0, 1)'
+}
+h3{
+    color: ' #1A1A19'
+}
+.active, .active:hover{
+    color: 'rgba(189, 0, 0, 1)' !important;
+}
+.addmeal:hover{
+    cursor: pointer;
+}
+input:focus, textarea:focus{
+    outline: none;
+}
+
+.addmeal, .addmeal:hover{
+    text-decoration: 'none';
+    text-decoration-line: 'none';
+    color: '#BD0000' !important;
+}
+.css-ohwg9z {
+    overflow: visible !important;
+}
