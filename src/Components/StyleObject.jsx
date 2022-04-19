@@ -147,9 +147,7 @@ export const StyledObject = {
              width: '70%',
              padding: '5px',
              borderRadius: '5px',
-             border: '1px solid #FEC72E',
-             position : 'abosolute'
-
+             border: '1px solid #FEC72E'
          },
          buttonStyle:{
             backgroundColor: 'rgba(254, 181, 46, 1)',
@@ -568,6 +566,57 @@ export const StyledObject = {
             alignSelf: 'right',
             margin: '5vh',
             borderRadius: '5px'
+        },
+        formWrapper:{
+            backgroundColor: "#FFFFFF",
+            boxShadow: "0px 4px 10px 4px rgba(121, 121, 130, 0.15)",
+            width: '100%',
+            height: 'fit-content',
+            minHeight: "100vh",
+            fontFamily: "Nunito",
+            padding: '0px 0px 20px 0px',
+            margin: '10px'
+
+        },
+        daysWorkHours:{
+            width: '20%',
+        },
+        daysInputFieldWrapper:{
+            width: "70%"
+        },
+        daysInputField:{
+            border: "1px dashed #717171",
+            padding: "5px",
+            width: "100px",
+            margin: "20px"
+        },
+        closedButton:{
+            padding: "5px",
+            border: "1px solid #717171",
+            boxSizing: "border-box",
+            borderRadius: "2px",
+            color: "#717171"
+        },
+        decoratedText:{
+                color: "#FEB52E"
+        },
+        saveSettingsButton:{
+            padding: "5px",
+            border: "1px solid #FEB52E",
+            color: "#BD0000",
+            borderRadius:"5px",
+            marginLeft: "100px",
+            backgroundColor: "#FEB52E"
+        },
+        chooseFileButton:{
+            border: "1px solid grey",
+            borderRadius: "5px",
+            margin: 'auto',
+            marginBottom:'25%',
+            width: '30%',
+            padding: '5px',
+            cursor: 'pointer'
         }
+
 
 }

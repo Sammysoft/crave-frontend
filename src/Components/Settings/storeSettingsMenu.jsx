@@ -57,6 +57,7 @@ const Menu =()=>{
                         <div style={StyledObject.storeMenuSaveSettingsWrapper}>
                             <span style={StyledObject.storeMenuSaveSettingsButton}>Save Settings</span>
                         </div>
+                        
                </div>
         </>
     )

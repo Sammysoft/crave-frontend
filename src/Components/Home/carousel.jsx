@@ -48,7 +48,7 @@ export default function RenderCarousel() {
   function Item(props)
 {
     return (
-        <div className="item" style={{backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)),url(${props.item.link})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundPosition: 'contain', backgroundSize: '100%', height: "80vh", width: '100%', margin: '0px', marginTop: '-10px'}}>
+        <div className="item" style={{backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)),url(${props.item.link})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundPosition: 'center', backgroundSize: '1440px 100vh', height: "100vh", width: '100%', margin: '0px', marginTop: '-10px', backgroundColor: "transparent"}}>
            <div style={StyledObject.carouseltemWrapper}>
            <span style={StyledObject.carouselItem}>
            <NameWrapper style={{fontWeight: '700', fontSize: ''}}>{props.item.name}</NameWrapper>
