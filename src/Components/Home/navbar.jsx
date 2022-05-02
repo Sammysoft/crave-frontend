@@ -1,5 +1,6 @@
 import React from "react";
 import { StyledObject } from "../StyleObject";
+import {Link} from "react-router-dom"
 import arrow from '../../Components/Dashboard/MenuList/svg/arrow-right.svg'
 
 const NavBar=()=>{
@@ -10,7 +11,7 @@ const NavBar=()=>{
                     <img src={'/assets/logo.png'} alt="" />
                 </span>
                 <span style={StyledObject.navItem}>
-                        <span style={StyledObject.navItemContent1}>For Merchants</span>
+                        <Link  style={{textDecoration: "none", textDecorationLine: "none", color: "#BD0000"}} to="/merchant/"><span style={StyledObject.navItemContent1}>For Merchants</span></Link>
                         <span style={StyledObject.navItemContent2}>Get the App</span>
                         <span style={StyledObject.navItemContent3}>Join Us <img src={arrow} alt="svg arrow"/></span>
                 </span>

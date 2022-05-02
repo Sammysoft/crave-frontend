@@ -8,8 +8,15 @@ import Sales from "./Sales";
 import TopSellingProducts from "./topsellingproducts";
 import { UserData } from './userdata';
 import { StyledObject } from "../../StyleObject";
+import StoreCard from "./storeCard";
 
-const Menu = ()=>{
+const Menu = ({
+    storename,storelocation,
+    storelogo, storetagline,
+     storeid, orders
+})=>{
+
+
     const [userData, setUserData] = useState({
         labels: UserData.map((data)=>data.amount),
         datasets: [{
@@ -21,7 +28,7 @@ const Menu = ()=>{
             drawActiveElementsOnTop: false,
             fill: {
                 target: 'origin',
-                above: '#fbe5d2',   // Area will be red above the origin
+                above: '#fbe5d2',
                 below: '#fbe5d2'
             },
             tension: 0.1
@@ -29,22 +36,26 @@ const Menu = ()=>{
     });
     return(
         <>
+
           <div style={StyledObject.dashWrap}>
+              <StoreCard
+              storename={storename}
+              storelocation={storelocation}
+              storelogo={storelogo}
+              storetagline={storetagline}
+               />
           <div style={StyledObject.dashboardMenu}>
-                     <Sales chartData={userData}/>
-                    <MissedOrders />
-            </div>
-            <div style={StyledObject.dashboardMenu}>
-                     <TopSellingProducts chartData={userData}/>
-                    <InaccurateOrder />
-            </div>
-            <div style={StyledObject.dashboardMenu}>
-                    <Customers chartData={userData}/>
-                    <CancelledOrders />
-            </div>
-            <div style={StyledObject.dashboardMenu}>
-                     {/* <Sales /> */}
-                    {/* <Downtime /> */}
+                     <div style={StyledObject.dashboardMenuLeftSide}>
+                        <Sales chartData={userData}  orders={orders}/>
+                        <TopSellingProducts chartData={userData}  orders={orders}/>
+                        <Customers chartData={userData}  orders={orders}/>
+                     </div>
+                    <div style={StyledObject.dashboardMenuRightSide}>
+                        <MissedOrders orders={orders} storeid={storeid}/>
+                        <InaccurateOrder  orders={orders} storeid={storeid}/>
+                        <CancelledOrders  orders={orders} storeid={storeid}/>
+                        <Downtime  orders={orders} storeid={storeid}/>
+                    </div>
             </div>
           </div>
         </>

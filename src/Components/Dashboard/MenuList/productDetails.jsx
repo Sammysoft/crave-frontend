@@ -31,16 +31,18 @@ const ProductDetails=(props)=>{
                 fontSize: '16px'
             },
             thirdText:{
-                    width: '30%',
+                    width: '70%',
                     color: 'rgba(113, 113, 113, 1)',
                     fontWeight: '400',
-                    fontSize: '16px'
+                    fontSize: '16px',
+                    
             },
             otherThirdText:{
                     width: '30%',
                     color: 'rgba(113, 113, 113, 1)',
                     fontWeight: '400',
-                    fontSize: '16px'
+                    fontSize: '16px',
+
             },
             thirdTextWrapper:{
                 display: 'flex',
@@ -58,7 +60,7 @@ const ProductDetails=(props)=>{
                     </span>
                     <span style={StyleObject.textWrapper}>
                            <span style={StyleObject.firstText}>{props.firstText}</span><br/>
-                            <span style={StyleObject.secondText}>{props.secondText}</span><br/>
+                            <span style={StyleObject.secondText}>N{props.secondText}</span><br/>
                             <span style={StyleObject.thirdTextWrapper}>
                                 <span style={StyleObject.thirdText}>
                                     <img src={tag} alt="tag" /> {props.thirdText}

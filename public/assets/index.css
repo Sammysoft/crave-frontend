@@ -64,4 +64,20 @@ input[type="checkbox"] {
     background: linear-gradient(101.63deg, #BD0000 -26.55%, #FEB52E 100%);;
   }
 
+  .swal2-styled.swal2-confirm{
+      background-color: #FEB52E !important;
+      color: #BD0000 !important;
+  }
+  .swal2-popup{
+      background: #FEB52E !important;
+      color: "white" !important;
+  }
+  .swal2-title{
+      color: #BD0000 !important;
+  }
+
+  .swal2-html-container {
+      color: whitesmoke !important;
+  }
+
 

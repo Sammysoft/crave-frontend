@@ -11,7 +11,7 @@ export const StyledObject = {
         th:{
             color: 'black',
             fontWeight: '700',
-            padding: '10px',
+            padding: '5px',
             textAlign: 'center',
 
             },
@@ -57,6 +57,22 @@ export const StyledObject = {
             padding: '40px',
 
         },
+        dashboardMenuLeftSide:{
+            width: "55%",
+
+        },
+        dashboardMenuRightSide:{
+            width: "40%",
+
+        },
+        storeInfo:{
+            height: "60vh",
+            position: "relative",
+            width: "100%",
+            display: 'flex',
+            justifyContent:"center",
+            alignItems: "center",
+        },
         dashWrap:{
              display: 'flex',
              marginTop: '5vh',
@@ -69,13 +85,21 @@ export const StyledObject = {
         salesWrapper:{
             padding: '10px',
             backgroundColor: 'white',
-            maxHeight: 'fit-content',
             borderRadius: '5px',
-            width: '45%'
+            minHeight: "70vh",
+            maxHeight: "fit-content",
+            marginBottom: "10vh",
+            width: '100%',
+            boxShadow: "-7px 7px 14px rgba(248, 141, 43, 0.07)"
          },
          salesHeader:{
-             padding: '5px'
+             padding: '15px 5px 0px 5px',
+             fontWeight: '700',
+             fontSize: "24px",
+             width : "100%",
+             position: "relative"
          },
+
          addMeal:{
             padding: '10px',
             backgroundColor: 'white',
@@ -105,7 +129,7 @@ export const StyledObject = {
              justifyContent: 'space-between',
          },
          inputLabel:{
-             width: '25%',
+             width: '50%',
              padding: '10px',
              fontSize: '16px',
              fontWeight: '400',
@@ -485,7 +509,8 @@ export const StyledObject = {
             backgroundColor: '#FFFFFF',
             width: '65%',
             margin:'auto',
-            height: '70vh',
+            minHeight: '50vh',
+            maxHeight: '70vh',
             margin: '5vh auto auto auto',
             overflowY: 'scroll',
             boxShadow: '0px 4px 10px 4px rgba(121, 121, 130, 0.15)',
@@ -519,6 +544,12 @@ export const StyledObject = {
         storeMenuInputField: {
             border: 'none',
             width: '90%',
+            borderBottom: '1px dashed #717171',
+            padding: '5px'
+        },
+        storeMenuInputField2: {
+            border: 'none',
+            width: '50%',
             borderBottom: '1px dashed #717171',
             padding: '5px'
         },
@@ -616,6 +647,38 @@ export const StyledObject = {
             width: '30%',
             padding: '5px',
             cursor: 'pointer'
+        },
+        storeCardWrapper:{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: "45%",
+            height: "40vh",
+            padding: "5vh",
+        },
+        storeNameWrapper:{
+            color: " #1A1A19",
+            fontFamily: "Nunito",
+            fontWeight: "700",
+            fontSize: "24px",
+
+        },
+        storeCardLeftSide:{
+            width: "30%"
+        },
+        storeCardRightSide:{
+            width: "60%"
+        },
+        storeCardRightSideWrapper:{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "left"
+        },
+        storeLocationWrapper:{
+            color: "#000000",
+            fontSize: "14px",
+            fontWeight: "400"
         }
 
 

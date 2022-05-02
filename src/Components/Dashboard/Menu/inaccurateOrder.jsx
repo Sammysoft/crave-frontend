@@ -1,28 +1,52 @@
 import React from "react";
+import styled from "styled-components";
+
+
+const StatusInfo = styled.span`
+background: linear-gradient(101.63deg, #D76666 -26.55%, #FEDD82 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+font-weight: 700;
+font-size: 24px;
+text-align: center;
+padding: 10px;
+`
+
+
+
+
+
 var StyledObject = {
     missedOrdersWrapper:{
        padding: '10px',
        backgroundColor: 'white',
-       maxHeight: 'fit-content',
+       minHeight: '50vh',
        borderRadius: '5px',
        position: 'relative',
-       width: '45%'
+       width: '100%',
+       marginBottom: "10vh",
+       boxShadow: "-7px 7px 14px rgba(248, 141, 43, 0.07)"
     },
     missedOrderHeader:{
         width: '100%',
+        padding: "15px 5px 0px 5px",
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'space-between',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        fontWeight: "700",
+        fontSize: '24px'
     },
        th:{
        color: '#FEB52E',
-       fontWeight: '700',
-       padding: '10px',
+       fontWeight: '500',
+       padding: '5px',
        textAlign: 'left'
        },
        td:{
-           padding: '10px',
+           padding: '5px',
            textAlign: 'left'
        },
        more:{
@@ -31,15 +55,24 @@ var StyledObject = {
            backgroundRepeat: 'repeat',
            webkitBackgroundClip: 'text',
            webkitTextFillColor: 'transparent'
-       }
+       },
+       storeInfo:{
+        height: "30vh",
+        position: "relative",
+        width: "100%",
+        display: 'flex',
+        justifyContent:"center",
+        alignItems: "center",
+    }
 
    }
-const InaccurateOrder = ()=>{
+const InaccurateOrder = ({ orders })=>{
     return(
         <>
                 <div style={StyledObject.missedOrdersWrapper}>
-                           <span style={StyledObject.missedOrderHeader}> <h4>Inaccurate Orders</h4><span style={StyledObject.more}><h3>16</h3></span></span><br/><hr style={{color: '#FEB52E'}}/>
-                           <table  style={{width: '100%'}}>
+                           <span style={StyledObject.missedOrderHeader}>Inaccurate Orders<span style={StyledObject.more}>0</span></span><br/><hr style={{color: '#FEB52E'}}/>
+                        {orders != 0 ?  <>
+                            <table  style={{width: '100%'}}>
                               <thead>
                               <th style={StyledObject.th}>Username</th>
                               <th  style={StyledObject.th}>Most Ordered</th>
@@ -52,6 +85,15 @@ const InaccurateOrder = ()=>{
                               </tbody>
                            </table>
                            <span style={{width: '100%', textAlign: 'right', float: 'right', padding: '10px'}}><span style={StyledObject.more}><a href="/orders/inaccurate">More</a> </span></span>
+                        </> : <>
+                        <div style={StyledObject.storeInfo}>
+                              <StatusInfo>You do not have any inaccurate orders</StatusInfo>
+                        </div>
+
+                        </>
+                        }
+
+
                 </div>
         </>
     )

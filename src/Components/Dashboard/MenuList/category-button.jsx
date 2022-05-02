@@ -3,17 +3,18 @@ import plus from './svg/plus.svg';
 import { NavLink } from "react-router-dom";
 import { StyledObject } from "../../StyleObject";
 
-const Category = (props)=>{
+const CategoryButton= ()=>{
+
+
     return(
         <>
-            <div>
-            <NavLink style={{textDecoration: 'none'}} to="/lists/addmeal" className="addmeal">
+                <NavLink style={{textDecoration: 'none'}} to="/lists/category" className="addmeal">
                 <span style={StyledObject.buttonStyle} >
                     Category <img src={plus} alt="plus" />
                 </span>
-            </NavLink>
-            </div>
+                </NavLink>
         </>
     )
 }
-export default Category;
+
+export default CategoryButton;
