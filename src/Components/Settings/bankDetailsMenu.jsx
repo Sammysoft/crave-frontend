@@ -72,7 +72,6 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
 
         axios.post(`${api}merchant/settings/bank`, payload)
             .then(res=>{
-                console.log(res.data)
                 setForm(false)
                 Swal.fire({
                     icon: 'success',
@@ -126,9 +125,9 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
                                 <input style={StyledObject.storeMenuInputField}type="text" name="accountname" value={accountname} onChange={(e)=>{setAccountName(e.target.value)}}/>
                             </span>
                         </div>
-                        <div style={{padding: '50px'}}>
+                        <div style={{padding: '0px 30px'}}>
                         <span style={{fontSize: "16px", color: "#717171", fontFamily: "Nunito"}}>
-                              <input type="checkbox" name="isPriamary" value={isPrimary} onClick={(e)=>{_checkChecked(e)}}/> Set as primary account
+                              <input type="checkbox" name="isPrimary" value={isPrimary} onClick={(e)=>{_checkChecked(e)}}/> Set as primary account
                         </span>
                     </div>
 
@@ -159,9 +158,9 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
                                     return(
                                         <>
                                         <tr style={StyledObject.tr}>
-                                            <td style={StyledObject.td}>{info.bankname}</td>
-                                            <td style={StyledObject.td}>{info.accountnumber}</td>
-                                            <td style={StyledObject.td}>{info.accountname}</td>
+                                            <td style={info.isPrimary == true ? {color: '#BD0000', padding: '10px', } : {  padding: '10px', textAlign:'justify', color: 'black'}}>{info.bankname}</td>
+                                            <td style={info.isPrimary == true ? {color: '#BD0000', padding: '10px', } : {  padding: '10px', textAlign:'justify', color: 'black'}}>{info.accountnumber}</td>
+                                            <td style={info.isPrimary == true ? {color: '#BD0000', padding: '10px', } : {  padding: '10px', textAlign:'justify', color: 'black'}}>{info.accountname}</td>
                                             <td style={StyledObject.td}><img src={trash} alt="trash icon" /></td>
                                         </tr>
                                          <tr style={StyledObject.tr}></tr>
@@ -171,7 +170,13 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
 
                                 })}
                                 </>:<>
-
+                                    <tr>
+                                     <td colSpan={4}>
+                                     <div style={{width: "100%", height: "30vh", display: 'flex', justifyContent:"center", alignItems:"center"}}>
+                                           <span style={{fontWeight: "200"}}> No Bank Account Yet</span>
+                                        </div>
+                                     </td>
+                                    </tr>
                                 </>
                             }
                         </tbody>

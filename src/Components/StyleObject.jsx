@@ -238,7 +238,8 @@ export const StyledObject = {
             fontWeight: '400'
         },
         dashboardLeftBar: {
-            height: '90vh',
+            height: 'fit-content',
+            minHeight: '90vh',
             flex: '1',
             padding: '3%',
             boxShadow: '20px 10px 20px #88888',

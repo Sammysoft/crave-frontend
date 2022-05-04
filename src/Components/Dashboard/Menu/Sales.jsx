@@ -20,15 +20,9 @@ const Sales =({chartData, orders})=>{
         <>
         <div style={StyledObject.salesWrapper}>
               <div style={StyledObject.salesHeader}>Sales</div><br/><hr style={{color: '#FEB52E'}}/>
-
-                { orders != 0 ?
                 <>
                 <Line  data={chartData}/>
-                </>:<>
-                <div style={StyledObject.storeInfo}>
-                        <StatusInfo>You have not made any sales</StatusInfo>
-                </div>
-                </>}
+                </>
              
         </div>
         </>

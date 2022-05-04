@@ -15,12 +15,12 @@ export const UserData = [
         Month: '26'
     },
     {
-        id:3,
+        id:4,
         amount: 'N10,000',
         Month: '27'
     },
     {
-        id:3,
+        id:5,
         amount: 'N25,000',
         Month: '28'
     }

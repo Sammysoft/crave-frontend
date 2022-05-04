@@ -22,7 +22,6 @@ const BankDetails=()=>{
                     Authorization: token
                 }
             }).then(res=>{
-                console.log(res.data.data.bankdetails)
                 setBankDetails(res.data.data.bankdetails)
                 setStoreName(res.data.data.storename)
             })

@@ -19,7 +19,7 @@ background: linear-gradient(101.63deg, #D76666 -26.55%, #FEDD82 100%);
 background-clip: text;
 text-fill-color: transparent;
 font-weight: 700;
-font-size: 24px
+font-size: 24px;
 `
 
 const TopSellingProducts =({ chartData, orders })=>{
@@ -28,20 +28,10 @@ const TopSellingProducts =({ chartData, orders })=>{
     return(
         <>
         <div style={StyledObject.salesWrapper}>
-              <div style={StyledObject.salesHeader}>Top Selling Meals </div><br/><hr style={{color: '#FEB52E'}}/>
-
-
-                {orders != 0 ?
+              <div style={StyledObject.salesHeader}>Top Selling Meals </div><br/><hr style={{color: '#FEB52E'}}/>              
                 <>
                   <Pie data={chartData} style={{width: "70%", height: "70%"}}/>
-                </>:<>
-                <div style={StyledObject.storeInfo}>
-                        <StatusInfo>You have not made any sales</StatusInfo>
-                </div>
                 </>
-            }
-
-
         </div>
         </>
     )

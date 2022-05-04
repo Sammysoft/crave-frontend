@@ -67,7 +67,7 @@ const Dashboard = ()=>{
                     text: 'Please Login',
                   })
             }else{
-                // console.log(response.data)
+               
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
