@@ -1,8 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { StyledObject } from "../StyleObject";
+import { css } from '@emotion/react';
+import ClipLoader from "react-spinners/ClipLoader";
+import Swal from 'sweetalert2';
 import url from '../config';
 let api = url.api;
+const override = css`
+  display: block;
+  margin: 0 auto;
+//   border-color: red;
+`;
+
+
+
 
 const Menu =({ storename, 
             storetagline, 
@@ -19,13 +30,17 @@ const Menu =({ storename,
     const [storeupdatedtagline, setStoreTagLine] = useState(storetagline);
     const [storeupdateddescription, setStoreDescription] = useState(storedescription);
     const [storeupdatedlocation, setStoreLocation] = useState(storelocation);
+    const [loading, setLoading] = useState(true);
+    let [color, setColor] = useState("#DB0000");
     let id = storeid
 
   useEffect(()=>{
-     setStoreDescription(storedescription)
+      setLoading(true)
+      setStoreDescription(storedescription)
       setStoreTagLine(storetagline)
       setStoreLocation(storelocation)
       setStoreName(storename)
+      setLoading(false)
   }, [storetagline, storename, storelocation, storedescription])
 
 
@@ -36,7 +51,7 @@ const Menu =({ storename,
         }
 
         axios.post(`${api}merchant/settings/profile/${id}`, payload)
-            then(res => {
+            .then(res => {
                 console.log(res)
                 Swal.fire({
                     icon: 'success',
@@ -48,7 +63,7 @@ const Menu =({ storename,
                 Swal.fire({
                     icon: 'warning',
                     tittle: 'Oops!', 
-                    text: error.response.data
+                    text: error.response.data.msg
                 })
             })
     }
@@ -60,12 +75,15 @@ const Menu =({ storename,
                         <span style={StyledObject.storeMenuContentWrapper}>
                             <b>Store Information:</b> <i>(Fill in your store details)</i>
                         </span>
+
+                        {loading ? <ClipLoader color={color} loading={loading} css={override} size={150} />:
+                       <>
                         <div style={StyledObject.storeMenuContentFields}>
                             <span style={StyledObject.storeMenuFirstField}>
                                 Store Name
                             </span>
                             <span style={StyledObject.storeMenuSecondField}>
-                                <input style={StyledObject.storeMenuInputField}type="text" name="storeName" value={storeprofile} disabled/>
+                                 <input style={StyledObject.storeMenuInputField}type="text" name="storeName" value={storename} disabled/>
                             </span>
                         </div>
                         <div style={StyledObject.storeMenuContentFields}>
@@ -109,7 +127,8 @@ const Menu =({ storename,
                         <div style={StyledObject.storeMenuSaveSettingsWrapper}>
                             <span style={StyledObject.storeMenuSaveSettingsButton} onClick = {(e) => {updateProfile(e)}}>Save Settings</span>
                         </div>
-                        
+                        </>
+                         }
                </div>
         </>
     )

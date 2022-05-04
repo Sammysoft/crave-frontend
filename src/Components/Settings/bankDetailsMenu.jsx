@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyledObject } from "../StyleObject";
+import { css } from '@emotion/react';
+import ClipLoader from "react-spinners/ClipLoader";
 import styled from "styled-components";
 import plus from '../Dashboard/MenuList/svg/plus.svg';
 import trash from '../Dashboard/MenuList/svg/trash.svg';
@@ -8,6 +10,13 @@ import Swal from 'sweetalert2';
 import url from '../config';
 let api = url.api
 
+
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+//   border-color: red;
+`;
 
 const AccountButtonWrapper = styled.div`
 width: 100%;
@@ -51,6 +60,8 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
     const [accountname, setAccountName] = useState("");
     const [accountnumber, setAccountNumber] = useState('');
     const [isPrimary, setIsPrimary] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
+    let [color, setColor] = useState("#DB0000");
 
     const _checkChecked = (e)=>{
         const checked = e.target.checked;
@@ -66,6 +77,7 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
 
     const addBankDetails = ()=>{
 
+        setIsLoading(true)
         const payload = {
            bankname, accountname, accountnumber, isPrimary, store
         }
@@ -78,6 +90,7 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
                     timer: 2000,
                     text: res.data.msg
                 })
+                setIsLoading(false)
             }).catch(error=>{
                 Swal.fire({
                     icon: 'warning',
@@ -99,6 +112,7 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
                           <span> <span style={{color: "#717171", fontWeight: "700", fontSize: "18px"}}>Bank Details</span> <i>(Enter bank details)</i></span>
                           <span onClick={()=>{setForm(false)}}><img src={'/assets/img/close.png'} alt="close icon" /></span>
                           </span>
+
                           <div style={StyledObject.storeMenuContentFields}>
                             <span style={StyledObject.storeMenuFirstField}>
                                 Bank Name
@@ -151,7 +165,13 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
                                 <th style={StyledObject.th}>Account Name </th>
                                 <th  style={StyledObject.th}></th>
                             </thead>
-                        <tbody>
+
+                            {isLoading ? <>
+                                <div style={{width: '100vw', height: '100vh', justifyContent: "center", alignItems: 'center', display: 'flex', position:"relative"}}>
+                                <ClipLoader color={color} loading={isLoading} css={override} size={150} />
+                                </div>
+                            </>:<>
+                            <tbody>
                                 {bankdetails.length !==0 ?
                                 <>
                                 {bankdetails.map((info, key)=>{
@@ -180,6 +200,8 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
                                 </>
                             }
                         </tbody>
+                            </>}
+                      
                         </table>
                </ContentWrapper>
             </div>

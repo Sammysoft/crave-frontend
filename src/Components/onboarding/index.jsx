@@ -4,12 +4,20 @@ import { StyledObject } from "../StyleObject";
 import image from '../assets/signup.png';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
+import { css } from '@emotion/react';
+import ClipLoader from "react-spinners/ClipLoader";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import url from "../config";
 let api = url.api;
 
 
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+//   border-color: red;
+`;
 
 
 let RegisterWrapper = styled.div`
@@ -106,11 +114,12 @@ const [careline2, setCareline2 ] = useState("");
 const [storetagline, setStoretagline ] = useState("");
 const [storemail, setStoremail] = useState("");
 const [password, setPassword] = useState("");
-const [isLoading, SetisLoading] = useState(false)
-
+const [isLoading, setIsLoading] = useState(false)
+let [color, setColor] = useState("#DB0000");
 
 
 const submitData =(e)=>{
+    setIsLoading(true)
 const data = {
     storename,
     storedescription,
@@ -125,6 +134,7 @@ const data = {
     axios.post(`${api}merchant/signup`, data)
         .then(err =>{
             Navigate('/merchant/auth')
+            setIsLoading(false)
             Swal.fire({
                 icon: 'success',
                 text: "Store is created on Crave, You can login to complete your account setup",
@@ -139,15 +149,15 @@ const data = {
         <>
         {isLoading ?
                 <>
-                    <div style={{position: "absolute", width: "100vw", height: "100vh", zIndex: "9999", backgroundColor: "white"}}>
-
-                    </div>
+                   <div style={{width: '100vw', height: '100vh', justifyContent: "center", alignItems: 'center', display: 'flex', position:"relative"}}>
+                   <ClipLoader color={color} loading={isLoading} css={override} size={150} />
+                   </div>
                 </> :
                 <>
                     <RegisterWrapper>
                             <img src={image} alt="display-pic" height="100%" width="100%"/>
                     </RegisterWrapper>
-                    <div style={{backgroundColor: 'transparent', width: '90%', margin: 'auto', height: "auto", padding: '100px 10px',     fontFamily: 'Nunito'}}>
+                    <div style={{backgroundColor: 'transparent', width: '90%', margin: 'auto', height: "auto", padding: '100px 10px', fontFamily: 'Nunito'}}>
                         <TextWrap>Register your business with us</TextWrap>
                         <div style={StyledObject.formWrapper}>
                                 <div style={{width: '90vw', margin : "auto", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>

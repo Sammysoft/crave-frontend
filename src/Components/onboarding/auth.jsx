@@ -4,6 +4,8 @@ import { StyledObject } from "../StyleObject";
 import image from '../assets/signup.png';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router";
+import { css } from '@emotion/react';
+import ClipLoader from "react-spinners/ClipLoader";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import url from '../config';
@@ -12,7 +14,11 @@ let api = url.api;
 
 
 
-
+const override = css`
+  display: block;
+  margin: 0 auto;
+//   border-color: red;
+`;
 
 
 
@@ -79,11 +85,13 @@ const Auth = ()=>{
     const [storename, setStorename] = useState("");
     const [password, setPassword] = useState("");
     const [storemail, setStoremail] = useState("");
-
+    const [isLoading, setIsLoading] = useState(false)
+    let [color, setColor] = useState("#DB0000");
 
 
 
     const login = () =>{
+        setIsLoading(true)
         const payload = {
             storename, password, storemail
         }
@@ -91,6 +99,7 @@ const Auth = ()=>{
             .then(user=> {
                 localStorage.setItem('token', user.data.token)
                 Navigate('/dashboard')
+                setIsLoading(false)
             })
             .catch(error=>{
                 console.log(error.response.data.msg)
@@ -99,6 +108,7 @@ const Auth = ()=>{
                     title:"Error",
                     text: error.response.data.msg
                 })
+                setIsLoading(false)
             })
     }
 
@@ -117,10 +127,16 @@ const Auth = ()=>{
                     </span>
                     </div>
 
-
-                <SignInWrapper>
-                        <div style={StyledObject.storeMenuContentFields}>
-                              <span style={StyledObject.storeMenuFirstField}>Store Name</span>
+                {isLoading ? <>
+                
+                       
+                    <div style={{width: '100%', height: '100%', justifyContent: "center", alignItems: 'center', display: 'flex', position:"relative"}}>
+                   <ClipLoader color={color} loading={isLoading} css={override} size={150} />
+                   </div>
+                            </>:<>
+                    <SignInWrapper>        
+                    <div style={StyledObject.storeMenuContentFields}>
+                            <span style={StyledObject.storeMenuFirstField}>Store Name</span>
                                 <input name="storename" value={storename} onChange={(e)=> setStorename(e.target.value)} style={StyledObject.storeMenuInputField} /><br/>
 
                               </div><br/>
@@ -134,9 +150,11 @@ const Auth = ()=>{
                             </div>
                         </div>
                     </div>
-
-                </SignInWrapper>
-
+                    </SignInWrapper>
+                    </>
+                
+                }
+                           
 
 
 
