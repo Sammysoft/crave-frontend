@@ -13,7 +13,7 @@ a:hover{
     #view{
      color: '#DB0000';
       font-weight: 700;
-      font-size: 2rem
+      font-size: 1rem
     }
   }
 @media only screen and ( min-width: 1440px ){
