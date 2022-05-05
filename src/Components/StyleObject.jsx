@@ -217,7 +217,8 @@ export const StyledObject = {
             fontFamily: 'Nunito'
         },
         navItemContent1:{
-            marginLeft: '50px',
+            float: 'right',
+            marginRight: '50px',
             cursor: 'pointer',
             fontFamily: 'Nunito',
             fontWeight:'700'

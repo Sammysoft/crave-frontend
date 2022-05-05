@@ -12,8 +12,8 @@ const NavBar=()=>{
                 </span>
                 <span style={StyledObject.navItem}>
                         <Link  style={{textDecoration: "none", textDecorationLine: "none", color: "#BD0000"}} to="/merchant/"><span style={StyledObject.navItemContent1}>For Merchants</span></Link>
-                        <span style={StyledObject.navItemContent2}>Get the App</span>
-                        <span style={StyledObject.navItemContent3}>Join Us <img src={arrow} alt="svg arrow"/></span>
+                        {/* <span style={StyledObject.navItemContent2}>Get the App</span>
+                        <span style={StyledObject.navItemContent3}>Join Us <img src={arrow} alt="svg arrow"/></span> */}
                 </span>
             </div>
         </>
