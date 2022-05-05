@@ -19,18 +19,10 @@ const Customers =({ chartData, orders })=>{
     return(
         <>
         <div style={StyledObject.salesWrapper}>
-              <div style={StyledObject.salesHeader}>Customers </div><br/><hr style={{color: '#FEB52E'}}/>
-
-
-                {orders !=0 ?
+              <div style={StyledObject.salesHeader}>Customers </div><br/><hr style={{color: '#FEB52E'}}/>         
                 <>
                  <Doughnut data={chartData}  style={{width: "70%", height: "70%"}}/>
-                </>:<>
-                <div style={StyledObject.storeInfo}>
-                        <StatusInfo>You have no customers yet</StatusInfo>
-                </div>
                 </>
-                }
 
         </div>
         </>

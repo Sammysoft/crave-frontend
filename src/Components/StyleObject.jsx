@@ -129,11 +129,10 @@ export const StyledObject = {
              justifyContent: 'space-between',
          },
          inputLabel:{
-             width: '50%',
+             width: '40%',
              padding: '10px',
              fontSize: '16px',
              fontWeight: '400',
-             color: '#717171'
          },
          inputField:{
              width: '65%',
@@ -209,7 +208,7 @@ export const StyledObject = {
             padding: '5vh',
             display: 'flex',
             justifyContent: 'space-between',
-            fontFamily: 'Nunito'
+            fontFamily: 'Nunito',
         },
         navItem:{
             width: '40%',
@@ -551,7 +550,7 @@ export const StyledObject = {
         },
         storeMenuInputField2: {
             border: 'none',
-            width: '50%',
+            width: '60%',
             borderBottom: '1px dashed #717171',
             padding: '5px'
         },

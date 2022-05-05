@@ -114,7 +114,9 @@ const [careline2, setCareline2 ] = useState("");
 const [storetagline, setStoretagline ] = useState("");
 const [storemail, setStoremail] = useState("");
 const [password, setPassword] = useState("");
-const [isLoading, setIsLoading] = useState(false)
+const [isLoading, setIsLoading] = useState(false);
+const [firstname, setFirstName] = useState('');
+const [lastname, setLastName] = useState('')
 let [color, setColor] = useState("#DB0000");
 
 
@@ -124,21 +126,38 @@ const data = {
     storename,
     storedescription,
     storelocation,
-    storetagline,
+    // storetagline,
     careline1,
     careline2,
     storemail,
-    password
+    password,
+    fullname: `${firstname} ${ lastname }`
 }
 
     axios.post(`${api}merchant/signup`, data)
         .then(err =>{
+            if(err){
+                setIsLoading(false)
+                Swal.fire({
+                    icon: 'warning',
+                    text: err.msg,
+                    title: 'Oops!'
+                })
+            }
             Navigate('/merchant/auth')
             setIsLoading(false)
             Swal.fire({
                 icon: 'success',
                 text: "Store is created on Crave, You can login to complete your account setup",
                 title: "Success"
+            }).catch(error => {
+                setIsLoading(false)
+                console.log(error.response.data.msg)
+                Swal.fire({
+                    icon: 'warning',
+                    text: error.response.data.msg,
+                    title: 'Oops!'
+                })
             })
 
         })
@@ -149,7 +168,7 @@ const data = {
         <>
         {isLoading ?
                 <>
-                   <div style={{width: '100vw', height: '100vh', justifyContent: "center", alignItems: 'center', display: 'flex', position:"relative"}}>
+                   <div style={{width: '100%', height: '100%', justifyContent: "center", alignItems: 'center', display: 'flex', position:"absolute", backgroundColor: 'white', zIndex:  '9999'}}>
                    <ClipLoader color={color} loading={isLoading} css={override} size={150} />
                    </div>
                 </> :
@@ -174,7 +193,7 @@ const data = {
                                 <input name="storename" type="text"  value={storename} onChange={(e)=>setStorename(e.target.value)} style={StyledObject.storeMenuInputField}/>
                               </div>
 
-                              <div style={StyledObject.storeMenuContentFields}>
+                              {/* <div style={StyledObject.storeMenuContentFields}>
                             <span style={StyledObject.storeMenuFirstField}><br/>
                                 Store Logo
                             </span>
@@ -185,7 +204,7 @@ const data = {
                                         <span style={StyledObject.storeMenuLogoDisplay}></span>
                                 </div>
                             </span>
-                        </div>
+                        </div> */}
 
                         <div style={StyledObject.storeMenuContentFields}>
                             <span style={StyledObject.storeMenuFirstField}>
@@ -196,10 +215,27 @@ const data = {
                             </span>
                         </div>
 
-                        <div style={StyledObject.storeMenuContentFields}>
+                            {/* <div style={StyledObject.storeMenuContentFields}>
+                              <span style={StyledObject.storeMenuFirstField}>Full Name</span>
+                                <input name="fullname" type="text"  value={fullname} onChange={(e)=>setFullName(e.target.value)} style={StyledObject.storeMenuInputField}/>
+                              </div> */}
+
+                              <div style={StyledObject.inputWrapper}>
+                            <span style={StyledObject.storeMenuFirstField}>First Name:</span>
+                            <div style={StyledObject.bottomInputWrapper}>
+                            <input type="text" name="firstname" style={StyledObject.storeMenuInputField2}  value={firstname} onChange={event => setFirstName(event.target.value)} />
+                                <div style={StyledObject.bottomInputWrapper}>
+                                <span style={StyledObject.inputLabel}>Last Name:</span>
+                                <input style={StyledObject.storeMenuInputField2} type="text" name="careline2" value={lastname} onChange={event => setLastName(event.target.value)}/>
+
+                                  </div>
+                                </div>
+                                </div>
+
+                              {/* <div style={StyledObject.storeMenuContentFields}>
                               <span style={StyledObject.storeMenuFirstField}>Tag line</span>
                                 <input type="text" name="storetagline" style={StyledObject.storeMenuInputField} value={storetagline} onChange={event => setStoretagline(event.target.value)}/>
-                              </div>
+                              </div> */}
 
                               <div style={StyledObject.storeMenuContentFields}>
                               <span style={StyledObject.storeMenuFirstField}>Location</span>
@@ -217,7 +253,7 @@ const data = {
 
                             </div>
                         </div>
-                    </div>
+                          </div>
 
                     <div style={StyledObject.inputWrapper}>
                         <span style={StyledObject.storeMenuFirstField}>Password:</span>
