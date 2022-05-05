@@ -118,50 +118,61 @@ const [isLoading, setIsLoading] = useState(false);
 const [firstname, setFirstName] = useState('');
 const [lastname, setLastName] = useState('')
 let [color, setColor] = useState("#DB0000");
+const [check, setChecked] = useState(false)
 
+
+const _checkChecked = ( e ) => {
+    const checked = e.target.checked;
+    if( !checked ){
+        setChecked( false )
+    }else{
+      setChecked( true )
+    }
+}
 
 const submitData =(e)=>{
     setIsLoading(true)
-const data = {
-    storename,
-    storedescription,
-    storelocation,
-    // storetagline,
-    careline1,
-    careline2,
-    storemail,
-    password,
-    fullname: `${firstname} ${ lastname }`
-}
 
-    axios.post(`${api}merchant/signup`, data)
-        .then(err =>{
-            if(err){
-                setIsLoading(false)
-                Swal.fire({
-                    icon: 'warning',
-                    text: err.msg,
-                    title: 'Oops!'
+    if(check === true){
+        const data = {
+            storename,
+            storedescription,
+            storelocation,
+            // storetagline,
+            careline1,
+            careline2,
+            storemail,
+            password,
+            fullname: `${firstname} ${ lastname }`
+        }
+            axios.post(`${api}merchant/signup`, data)
+                .then(res =>{
+                    Navigate('/merchant/auth')
+                    setIsLoading(false)
+                    Swal.fire({
+                        icon: 'success',
+                        text: "Store is created on Crave, You can login to complete your account setup",
+                        title: "Success"
+                    })
+                }).catch(error => {
+                    setIsLoading(false)
+                    console.log(error.response.data.msg)
+                    Swal.fire({
+                        icon: 'warning',
+                        text: error.response.data.msg,
+                        title: 'Oops!'
+                    })
                 })
-            }
-            Navigate('/merchant/auth')
-            setIsLoading(false)
-            Swal.fire({
-                icon: 'success',
-                text: "Store is created on Crave, You can login to complete your account setup",
-                title: "Success"
-            }).catch(error => {
-                setIsLoading(false)
-                console.log(error.response.data.msg)
-                Swal.fire({
-                    icon: 'warning',
-                    text: error.response.data.msg,
-                    title: 'Oops!'
-                })
-            })
 
-        })
 
+    }else{
+        setIsLoading( false )
+        Swal.fire( {
+            icon: 'warning',
+            text: 'Please, Accept Our Terms and Conditions',
+            title: 'Wait!'
+        } )
+    }
 }
 
     return(
@@ -401,7 +412,7 @@ const data = {
                     </FormWrapper>
                     <div style={{padding: '50px'}}>
                         <span style={{fontSize: "16px", color: "#717171", fontFamily: "Nunito", paddingLeft: "50px"}}>
-                              <input type="checkbox"/> I agree, on behalf of my company, to the Crave for business terms and conditions, and i agree to Crave’s <span style={StyledObject.decoratedText}>Terms of Use</span> and <span style={StyledObject.decoratedText}>Privacy Policy.</span>
+                              <input type="checkbox" onClick={( e )=>{_checkChecked( e )}}/> I agree, on behalf of my company, to the Crave for business terms and conditions, and i agree to Crave’s <span style={StyledObject.decoratedText}>Terms of Use</span> and <span style={StyledObject.decoratedText}>Privacy Policy.</span>
                         </span>
                     </div>
                     <span style={StyledObject.saveSettingsButton} type="submit" onClick={()=>{submitData()}}>Sign Up</span>

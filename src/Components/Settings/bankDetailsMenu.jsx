@@ -63,7 +63,7 @@ const BankDetailsMenu=({ bankdetails, storename })=>{
     const [isLoading, setIsLoading] = useState(false)
     let [color, setColor] = useState("#DB0000");
 
-    const _checkChecked = (e)=>{
+    const _checkChecked = ( e )=>{
         const checked = e.target.checked;
         if(checked){
             setIsPrimary(true)

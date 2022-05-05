@@ -90,7 +90,7 @@ const Auth = ()=>{
 
 
 
-    const login = () =>{
+    const login = (  ) =>{
         setIsLoading(true)
         const payload = {
             storename, password, storemail

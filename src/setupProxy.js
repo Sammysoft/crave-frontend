@@ -3,7 +3,7 @@
 //   app.use(
 //     '/api',
 //     createProxyMiddleware({
-//       target: 'http://localhost:6069/',
+//       target: 'http://localhost:6069/api/',
 //       changeOrigin: true,
 //     })
 //   );

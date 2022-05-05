@@ -1,7 +1,29 @@
 a:hover{
     cursor: pointer
 }
-
+@media only screen and (max-width: 1440px) {
+    #root {
+      display: none;
+    }
+    #mobile{
+        display: block;
+        width: 100vw;
+        height: 100vh;
+    }
+    #view{
+     color: '#DB0000';
+      font-weight: 700;
+      font-size: 2rem
+    }
+  }
+@media only screen and ( min-width: 1440px ){
+    #root {
+        display: block;
+    }
+    #mobile{
+        display: none
+    }
+}
 span:hover{
     cursor: pointer;
 }

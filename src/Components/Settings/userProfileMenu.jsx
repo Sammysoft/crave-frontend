@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyledObject } from "../StyleObject";
 
-const UserProfileMenu=()=>{
+const UserProfileMenu=( { fullname, password, email, phonenumber, id } )=>{
+
+
+
+
     return(
         <>
          <div style={StyledObject.storeMenu}><br/>

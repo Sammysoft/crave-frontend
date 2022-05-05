@@ -1,5 +1,5 @@
 const url ={
-    api: "http://api-crave.herokuapp.com/api/"
+    api: "https://api-crave.herokuapp.com/api/"
 }
 
 export default url;
