@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { StyledObject } from "../../StyleObject";
+import { checkProfileStatus } from "../checkProfileStatus";
 import Swal from "sweetalert2";
 
 const LeftBar = () => {
+  useEffect(() => {
+    checkProfileStatus();
+  }, []);
+
   const thisRoute = useLocation().pathname;
 
   const Navigate = useNavigate();

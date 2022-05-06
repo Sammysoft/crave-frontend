@@ -4,6 +4,7 @@ import axios from "axios";
 import url from "../../../config";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import { category } from "../../../categories";
 let api = url.api;
 
 const Menu = () => {
@@ -18,7 +19,7 @@ const Menu = () => {
   const [price, setPrice] = useState("");
   const [stockcount, setStockCount] = useState("");
   const [size, setSize] = useState("");
-  const [category, setCategory] = useState("");
+  const [selectedCategory, setCategory] = useState("");
   const [tags, setTags] = useState("");
   const [itemunit, setItemUnit] = useState("");
 
@@ -226,11 +227,11 @@ const Menu = () => {
             <div style={StyledObject.inputWrapper}>
               <span style={StyledObject.inputLabel}>Category:</span>
               <span style={StyledObject.inputField}>
-                <input
+                {/* <input
                   type="text"
                   name="category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
+                  //   value={category}
+                  //   onChange={(e) => setCategory(e.target.value)}
                   style={{
                     width: "100%",
                     border: "1px solid grey",
@@ -238,7 +239,40 @@ const Menu = () => {
                     borderRadius: "5px",
                     padding: "10px",
                   }}
-                />
+                /> */}
+                <select
+                  style={{
+                    width: "100%",
+                    border: "1px solid grey",
+                    borderStyle: "dotted",
+                    borderRadius: "5px",
+                    padding: "10px",
+                    backgroundColor: "transparent",
+                  }}
+                  value={selectedCategory}
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                >
+                  {category.map((item, id) => {
+                    return (
+                      <option
+                        key={id}
+                        value={item}
+                        style={{
+                          width: "100%",
+                          border: "1px solid grey",
+                          borderStyle: "dotted",
+                          borderRadius: "5px",
+                          padding: "10px",
+                        }}
+                      >
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
               </span>
             </div>
 
