@@ -47,7 +47,7 @@ const Menu = () => {
       tags,
       itemunit,
       stockcount,
-      category,
+      category: selectedCategory,
       size,
       mealincredients,
       store,

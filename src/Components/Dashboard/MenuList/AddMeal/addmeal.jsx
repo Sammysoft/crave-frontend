@@ -3,7 +3,6 @@ import LeftBar from "../../LeftBar";
 import NavBar from "../../NavBar/Navbar";
 import Menu from "./Menu";
 import { StyledObject } from "../../../StyleObject";
-import CategoryButton from "../category-button";
 
 const AddMeal = () => {
   return (
@@ -11,7 +10,7 @@ const AddMeal = () => {
       <div style={StyledObject.dashboardWrapper}>
         <LeftBar />
         <div style={StyledObject.rightbarWrapper}>
-          <NavBar page="Menu List" category={<CategoryButton />} />
+          <NavBar page="Menu List" />
           <Menu />
         </div>
       </div>

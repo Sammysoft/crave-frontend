@@ -542,13 +542,13 @@ export const StyledObject = {
     border: "none",
     width: "90%",
     borderBottom: "1px dashed #717171",
-    padding: "5px",
+    padding: "0px",
   },
   storeMenuInputField2: {
     border: "none",
     width: "60%",
     borderBottom: "1px dashed #717171",
-    padding: "5px",
+    padding: "1px",
   },
   storeMenuChooseFileButton: {
     border: "1px solid #717171",

@@ -2,14 +2,11 @@ import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { StyledObject } from "../../StyleObject";
-import { checkProfileStatus } from "../checkProfileStatus";
+import chevronup from '../MenuList/svg/chevron-up.svg';
+
 import Swal from "sweetalert2";
 
 const LeftBar = () => {
-  useEffect(() => {
-    checkProfileStatus();
-  }, []);
-
   const thisRoute = useLocation().pathname;
 
   const Navigate = useNavigate();
@@ -113,7 +110,9 @@ const LeftBar = () => {
                   className="bi bi-minecart"
                   viewBox="0 0 16 16"
                   style={
-                    thisRoute === "/lists" || thisRoute === "/lists/addmeal"
+                    thisRoute === "/orders/cancelled" ||
+                    thisRoute === "/orders/missed" ||
+                    thisRoute === "/orders/inaccurate"
                       ? { color: "#DB0000" }
                       : { color: "rgba(26, 26, 25, 1)" }
                   }
@@ -121,7 +120,7 @@ const LeftBar = () => {
                   <path d="M4 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8-1a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM.115 3.18A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 14 12H2a.5.5 0 0 1-.491-.408l-1.5-8a.5.5 0 0 1 .106-.411zm.987.82 1.313 7h11.17l1.313-7H1.102z" />
                 </svg>
                 <Link
-                  to="/lists"
+                  to="/orders/missed"
                   activeClass="active"
                   style={{
                     textDecoration: "none",
@@ -130,7 +129,9 @@ const LeftBar = () => {
                 >
                   <span
                     style={
-                      thisRoute === "/lists" || thisRoute === "/lists/addmeal"
+                      thisRoute === "/orders/cancelled" ||
+                      thisRoute === "/orders/missed" ||
+                      thisRoute === "/orders/inaccurate"
                         ? {
                             color: "#DB0000",
                             textDecorationLine: "none",
@@ -202,7 +203,9 @@ const LeftBar = () => {
                   className="bi bi-gear"
                   viewBox="0 0 16 16"
                   style={
-                    thisRoute === "/settings"
+                    thisRoute === "/settings/" ||
+                    thisRoute === "/Settings/profile" ||
+                    thisRoute === "/settings/bank"
                       ? { color: "#DB0000" }
                       : { color: "rgba(26, 26, 25, 1)" }
                   }
@@ -212,7 +215,9 @@ const LeftBar = () => {
                 </svg>
                 <Link
                   style={
-                    thisRoute === "/settings"
+                    thisRoute === "/settings/" ||
+                    thisRoute === "/Settings/profile" ||
+                    thisRoute === "/settings/bank"
                       ? {
                           textDecorationLine: "none",
                           textDecoration: "none",
@@ -226,10 +231,30 @@ const LeftBar = () => {
                           paddingLeft: "5px",
                         }
                   }
-                  to="/settings"
+                  to="/settings/"
                 >
                   Settings
                 </Link>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-up"
+                  viewBox="0 0 16 16"
+                  style={
+                    thisRoute === "/settings/" ||
+                    thisRoute === "/Settings/profile" ||
+                    thisRoute === "/settings/bank"
+                      ? { color: "#DB0000", marginLeft: '10px' }
+                      : { color: "rgba(26, 26, 25, 1)", marginLeft: '10px'}
+                  }
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
+                  />
+                </svg>
               </li>
             </span>
             <span style={{ display: "flex", flexDirection: "row" }}>

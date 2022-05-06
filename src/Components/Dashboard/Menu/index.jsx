@@ -10,6 +10,7 @@ import { UserData } from "./userdata";
 import { StyledObject } from "../../StyleObject";
 import StoreCard from "./storeCard";
 
+
 const Menu = ({
   storename,
   storelocation,

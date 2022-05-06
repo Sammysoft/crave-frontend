@@ -61,6 +61,20 @@ const Dashboard = () => {
             title: "Sorry.",
             text: "Please Login",
           });
+        } else if (response.data.bankdetails.length == 0) {
+          navigate("/settings/bank");
+          Swal.fire({
+            icon: "info",
+            text: "Please Complete Your Bank Settings",
+            title: "Add Bank Details",
+          });
+        } else if (!response.data.storetagline) {
+          navigate("/settings/");
+          Swal.fire({
+            icon: "info",
+            text: "Help Customers Identify you better",
+            title: "Setup Your Store Completely",
+          });
         } else {
           Swal.fire({
             position: "top-end",
