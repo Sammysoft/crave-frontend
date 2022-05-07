@@ -113,7 +113,7 @@ const Menu = ({ storename }) => {
                               <Status />
                             </td>
                             <td style={StyledObject.td}>
-                              <Action />
+                              <Action mealname={ item.mealname } storename = {item.store} mealid={item._id} />
                             </td>
                           </tr>
                         </>

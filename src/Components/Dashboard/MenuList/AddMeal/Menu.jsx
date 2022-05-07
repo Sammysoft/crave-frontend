@@ -19,7 +19,7 @@ const Menu = () => {
   const [price, setPrice] = useState("");
   const [stockcount, setStockCount] = useState("");
   const [size, setSize] = useState("");
-  const [selectedCategory, setCategory] = useState("");
+  const [selectedCategory, setCategory] = useState("Meal");
   const [tags, setTags] = useState("");
   const [itemunit, setItemUnit] = useState("");
 
@@ -227,19 +227,6 @@ const Menu = () => {
             <div style={StyledObject.inputWrapper}>
               <span style={StyledObject.inputLabel}>Category:</span>
               <span style={StyledObject.inputField}>
-                {/* <input
-                  type="text"
-                  name="category"
-                  //   value={category}
-                  //   onChange={(e) => setCategory(e.target.value)}
-                  style={{
-                    width: "100%",
-                    border: "1px solid grey",
-                    borderStyle: "dotted",
-                    borderRadius: "5px",
-                    padding: "10px",
-                  }}
-                /> */}
                 <select
                   style={{
                     width: "100%",
