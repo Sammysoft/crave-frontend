@@ -3,7 +3,6 @@ import LeftBar from "../../LeftBar";
 import NavBar from "../../NavBar/Navbar";
 import Menu from "./menu";
 import { StyledObject } from "../../../StyleObject";
-import CategoryButton from "../category-button";
 import url from "../../../config";
 let api = url.api;
 
@@ -28,7 +27,7 @@ const Category = () => {
       <div style={StyledObject.dashboardWrapper}>
         <LeftBar />
         <div style={StyledObject.rightbarWrapper}>
-          <NavBar page="Menu List" category={<CategoryButton />} />
+          <NavBar page="Menu List" />
           <Menu storename={storename} />
         </div>
       </div>

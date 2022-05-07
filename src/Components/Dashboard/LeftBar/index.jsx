@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { StyledObject } from "../../StyleObject";
-import chevronup from '../MenuList/svg/chevron-up.svg';
+import chevronup from "../MenuList/svg/chevron-up.svg";
 
 import Swal from "sweetalert2";
 
@@ -246,8 +246,8 @@ const LeftBar = () => {
                     thisRoute === "/settings/" ||
                     thisRoute === "/Settings/profile" ||
                     thisRoute === "/settings/bank"
-                      ? { color: "#DB0000", marginLeft: '10px' }
-                      : { color: "rgba(26, 26, 25, 1)", marginLeft: '10px'}
+                      ? { color: "#DB0000", marginLeft: "10px" }
+                      : { color: "rgba(26, 26, 25, 1)", marginLeft: "10px" }
                   }
                 >
                   <path
@@ -257,6 +257,51 @@ const LeftBar = () => {
                 </svg>
               </li>
             </span>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "right",
+                flexDirection: "column",
+              }}
+            >
+              <span
+                style={{
+                  marginLeft: "25px",
+                  padding: "5px",
+                  fontSize: "16px",
+                }}
+              >
+                User Profile
+              </span>
+              <span
+                style={{
+                  marginLeft: "25px",
+                  padding: "5px",
+                  fontSize: "16px",
+                }}
+              >
+               Store Settings
+              </span>
+              <span
+                style={{
+                  marginLeft: "25px",
+                  padding: "5px",
+                  fontSize: "16px",
+                }}
+              >
+               Bank Details
+              </span>
+              <span
+                style={{
+                  marginLeft: "25px",
+                  padding: "5px",
+                  fontSize: "16px",
+                }}
+              >
+                Subscription
+              </span>
+            </div>
             <span style={{ display: "flex", flexDirection: "row" }}>
               <li style={StyledObject.list}>
                 <svg
