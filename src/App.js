@@ -17,6 +17,7 @@ import Auth from "./Components/onboarding/auth";
 import SignIn from "./Pages/SignIn";
 import Category from "./Components/Dashboard/MenuList/category/index";
 import BankDetails from "./Components/Settings/bankDetails";
+import UpdateMeal from "./Components/Dashboard/MenuList/updateMeal";
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
           path="/lists/addmeal"
           element={<AddMeal messages={<Messages />} />}
         />
+        <Route path="/lists/updatemeal/*" element={<UpdateMeal />} />
         <Route path="/lists/category" element={<Category />} />
         <Route path="/settings/bank" element={<BankDetails />} />
         <Route path="/history" element={<History messages={<Messages />} />} />

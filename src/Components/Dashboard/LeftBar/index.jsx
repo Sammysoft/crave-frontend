@@ -21,10 +21,15 @@ const LeftBar = () => {
     });
   };
 
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(true);
 
   useEffect(() => {
-    setToggleMenu(!toggleMenu);
+    if(thisRoute === "/settings/" || thisRoute === "/settings/profile" || thisRoute === '/settings/bank' ){
+        setToggleMenu(true);
+    }else{
+      setToggleMenu(false)
+    }
+  
   }, []);
 
   return (

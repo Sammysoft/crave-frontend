@@ -20,11 +20,11 @@ let Style = {
     color: "#717171",
   },
 };
-const Action = ({ storename, mealname, storeid }) => {
+const Action = ({ storename, mealname, mealid }) => {
   const Navigate = useNavigate();
   const store = storename;
   const meal = mealname;
-  const id = storeid;
+  const id = mealid;
 
   const _deleteMeal = (meal, store) => {
     Swal.fire({
@@ -61,13 +61,13 @@ const Action = ({ storename, mealname, storeid }) => {
       });
   };
 
-  const _updateMeal = (meal, store, id) => {
-    Navigate('/lists/addmeal')
+  const _updateMeal = (id) => {
+    Navigate(`/lists/updatemeal/${id}`)
   }
 
   return (
     <>
-      <span style={Style.pencil} onClick={()=>{_updateMeal(meal, store, id)}}>
+      <span style={Style.pencil} onClick={()=>{_updateMeal(id)}}>
         <img src={pencil} alt="pencil" />
       </span>
       <span

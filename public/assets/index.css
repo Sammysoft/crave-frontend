@@ -1,7 +1,7 @@
 a:hover{
     cursor: pointer
 }
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 60px) {
     #root {
       display: none;
     }
@@ -16,7 +16,7 @@ a:hover{
       font-size: 1rem
     }
   }
-@media only screen and ( min-width: 960px ){
+@media only screen and ( min-width: 60px ){
     #root {
         display: block;
     }
@@ -89,17 +89,21 @@ input[type="checkbox"] {
   .swal2-styled.swal2-confirm{
       background-color: #FEB52E !important;
       color: #BD0000 !important;
+      font-family: "Nunito" !important;
   }
   .swal2-popup{
       background: #FEB52E !important;
       color: "white" !important;
+      font-family: "Nunito" !important;
   }
   .swal2-title{
       color: #BD0000 !important;
+      font-family: "Nunito" !important;
   }
 
   .swal2-html-container {
       color: whitesmoke !important;
+      font-family: "Nunito" !important;
   }
 
 

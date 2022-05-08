@@ -27,7 +27,7 @@ const Menu = ({
   const [storeupdateddescription, setStoreDescription] =
     useState(storedescription);
   const [storeupdatedlocation, setStoreLocation] = useState(storelocation);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   let [color, setColor] = useState("#DB0000");
   let id = storeid;
 
