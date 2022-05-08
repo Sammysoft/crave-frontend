@@ -1,7 +1,7 @@
 a:hover{
     cursor: pointer
 }
-@media only screen and (max-width: 60px) {
+@media only screen and (max-width: 960px) {
     #root {
       display: none;
     }
@@ -16,7 +16,7 @@ a:hover{
       font-size: 1rem
     }
   }
-@media only screen and ( min-width: 60px ){
+@media only screen and ( min-width: 960px ){
     #root {
         display: block;
     }
