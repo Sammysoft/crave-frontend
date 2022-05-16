@@ -1,41 +1,31 @@
 import React from "react";
 import { StyledObject } from "../../StyleObject";
-import WeOfferItem from "./WeOfferItem";
-import url from "../../assets/head5.png";
-import url2 from "../../assets/head6.png";
-import url3 from "../../assets/head7.png";
-import url4 from "../../assets/head8.png";
+import styled from "styled-components";
+import shop from "../../assets/shop.png";
+import rider from "../../assets/rider.png";
 
+let SelectOptionText = styled.span`
+  background-image: linear-gradient(
+    50deg,
+    rgba(189, 0, 0, 1),
+    rgba(254, 181, 46, 1)
+  );
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 1.5rem;
+`;
+
+let SelectOption = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+`;
 const Merchant = (props) => {
-  var body = [
-    {
-      id: 1,
-      title: "Boost your visibility",
-      content:
-        "Crave helps you to make your brands known to customers, increase your reach and impact",
-      url: url,
-    },
-    {
-      id: 2,
-      title: "Increased Customer Base",
-      content: `Crave helps you to make your brands known to customers, increase your reach and impact`,
-      url: url2,
-    },
-    {
-      id: 3,
-      title: "Increase you income",
-      content: `Every tool and integration you need to streamline your operations.
-                                from reservation and waitlists to shift planning and actionable insights`,
-      url: url3,
-    },
-    {
-      id: 4,
-      title: "Secured Payments Platform",
-      content: `Every tool and integration you need to streamline your operations.
-                              from reservation and waitlists to shift planning and actionable insights`,
-      url: url4,
-    },
-  ];
   return (
     <>
       <br />
@@ -49,12 +39,28 @@ const Merchant = (props) => {
       <br />
       <div style={StyledObject.weOfferHeader}>
         <span style={{ fontWeight: "700", fontSize: "1.5rem" }}>
-          Register as a <span style={{ color: "#FEB52E" }}>Merchant</span>
+          Partner with us
         </span>
       </div>
 
-      <div style={StyledObject.weOfferItems}>
-        <WeOfferItem body={body} />
+      <div
+        style={{
+          width: "70%",
+          margin: "auto",
+          display: "grid",
+          gridTemplateColumns: "auto auto",
+          gap: "10%",
+        }}
+      >
+        <SelectOption>
+          <img src={shop} alt="logo" />
+          <SelectOptionText>Become a Merchant</SelectOptionText>
+        </SelectOption>
+
+        <SelectOption>
+          <img src={rider} alt="logo" />
+          <SelectOptionText>Become a Rider</SelectOptionText>
+        </SelectOption>
       </div>
     </>
   );

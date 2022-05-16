@@ -1,10 +1,15 @@
 import Carousel from "react-material-ui-carousel";
 import { StyledObject } from "../../Components/StyleObject";
 import styled from "styled-components";
-import image1 from "../assets/image1.png";
-import image2 from "../assets/image2.png";
-import image3 from "../assets/image3.png";
-
+import image1 from "../assets/slide1.png";
+import image2 from "../assets/slide2.png";
+import image3 from "../assets/slide3.png";
+import image4 from '../assets/slide4.png';
+import image5 from '../assets/slide5.png';
+import image6 from '../assets/slide6.png';
+import image7 from '../assets/slide7.png';
+import image8 from '../assets/slide8.png';
+import image9 from '../assets/slide9.png'
 export default function RenderCarousel() {
   var items = [
     {
@@ -24,6 +29,42 @@ export default function RenderCarousel() {
       name2:
         "Choose from over 30 local and national favourites across the country. from your neighbourhood Abuja joint to the best sharwama spot",
       link: `${image3}`,
+    },
+    {
+      name: "So many choices for you",
+      name2:
+        "Choose from over 30 local and national favourites across the country. from your neighbourhood Abuja joint to the best sharwama spot",
+      link: `${image4}`,
+    },
+    {
+      name: "So many choices for you",
+      name2:
+        "Choose from over 30 local and national favourites across the country. from your neighbourhood Abuja joint to the best sharwama spot",
+      link: `${image5}`,
+    },
+    {
+      name: "So many choices for you",
+      name2:
+        "Choose from over 30 local and national favourites across the country. from your neighbourhood Abuja joint to the best sharwama spot",
+      link: `${image6}`,
+    },
+    {
+      name: "So many choices for you",
+      name2:
+        "Choose from over 30 local and national favourites across the country. from your neighbourhood Abuja joint to the best sharwama spot",
+      link: `${image7}`,
+    },
+    {
+      name: "So many choices for you",
+      name2:
+        "Choose from over 30 local and national favourites across the country. from your neighbourhood Abuja joint to the best sharwama spot",
+      link: `${image8}`,
+    },
+    {
+      name: "So many choices for you",
+      name2:
+        "Choose from over 30 local and national favourites across the country. from your neighbourhood Abuja joint to the best sharwama spot",
+      link: `${image9}`,
     },
   ];
 

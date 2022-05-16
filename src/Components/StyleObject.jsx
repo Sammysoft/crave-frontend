@@ -631,7 +631,7 @@ export const StyledObject = {
     border: "1px solid #FEB52E",
     color: "#BD0000",
     borderRadius: "5px",
-    marginLeft: "100px",
+    marginLeft: "80px",
     backgroundColor: "#FEB52E",
   },
   chooseFileButton: {

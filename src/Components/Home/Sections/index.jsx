@@ -8,38 +8,44 @@ import Image4 from "../../assets/left_image2.png";
 import { StyledObject } from "../../StyleObject";
 import Merchant from "./register_merchant";
 import styled from "styled-components";
-import LearnMoreButton from "./learn_more_button";
 import Newsletter from "./newsletter";
 import Footer from "./footer";
+import applestore from "../../assets/appstore.png";
+import play from "../../assets/play.png";
+import getapp from "../../assets/getapp.png";
+import getappback from '../../assets/getapp-back.png'
+
+
+let GetAppSection = styled.div`
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: row;
+background-image: url(${getappback});
+background-repeat: no-repeat;
+background-size: 100%;
+background-position: center;
+`
+
 
 const Section = () => {
-  const LearnMoreWrapper = styled.div`
-    width: 98%;
-    align-items: right;
-    text-align: right;
-    padding: 10px;
-    margin-top: 50px;
-  `;
   var displayText = [
     {
-      head: "Good food is Good mood!",
-      body: `Discover continental dishes and more,
-                    served by restaurants that partner with us`,
+      head: "Discover a wide range of meals",
+      body: `Food adventure in the palm of your hands`,
     },
     {
-      head: "Satisfying your cravings",
-      body: `Personalized experience. Get the best meal
-                    options for your dietary preference`,
+      head: "Easy convenient interface",
+      body: `You tap we deliver`,
     },
     {
-      head: "Skip wait time",
-      body: `Experience the best your neighbourhood has to offer
-                        all in  one app`,
+      head: "Pre-Order",
+      body: `Get prioritized deliveries when you preorder`,
     },
     {
-      head: "Partner with us",
-      body: `Discover a world of customers now within your reach
-                    when you sign up as a merchant`,
+      head: "Create and share moments",
+      body: `When memories matter, we will be with you to make them come alive`,
     },
   ];
 
@@ -69,9 +75,31 @@ const Section = () => {
         />
         <Merchant />
 
-        <LearnMoreWrapper>
-          <LearnMoreButton />
-        </LearnMoreWrapper>
+        <GetAppSection>
+          <img src={getapp} alt="getapp" />
+          <div style={StyledObject.linkUpElements}>
+            <div style={StyledObject.appBtn}>
+              <img src={applestore} alt="applestore" />
+              <span>
+                <span>Available on</span>
+                <br />
+                <span style={{ fontWeight: "700", fontSize: "1rem" }}>
+                  App Store
+                </span>
+              </span>
+            </div>
+            <div style={StyledObject.appBtn}>
+              <img src={play} alt="playstore" />
+              <span>
+                <span>Available on</span>
+                <br />
+                <span style={{ fontWeight: "700", fontSize: "1rem" }}>
+                  Google Play
+                </span>
+              </span>
+            </div>
+          </div>
+        </GetAppSection>
 
         <Newsletter />
         <Footer />

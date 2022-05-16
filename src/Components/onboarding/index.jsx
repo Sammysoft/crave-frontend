@@ -68,14 +68,15 @@ color: #BD0000;
 const FormWrapper = styled.div`
 display: flex;
 width: 100%;
-justify-content: space-around;
+justify-content: left;
 align-items: space-between;
 paddingLeft: 50px;
 `
 
 const LeftSide = styled.div`
-width: 50%;
+width: 70%;
 justify-content: left;
+padding: 0px 70px
 `
 
 const RightSide = styled.div`
@@ -121,6 +122,11 @@ let [color, setColor] = useState("#DB0000");
 const [check, setChecked] = useState(false)
 
 
+
+    
+
+    
+   
 const _checkChecked = ( e ) => {
     const checked = e.target.checked;
     if( !checked ){
@@ -217,14 +223,14 @@ const submitData =(e)=>{
                             </span>
                         </div> */}
 
-                        <div style={StyledObject.storeMenuContentFields}>
+                        {/* <div style={StyledObject.storeMenuContentFields}>
                             <span style={StyledObject.storeMenuFirstField}>
                                 Description:
                             </span>
                             <span style={StyledObject.storeMenuSecondField}>
                                 <textarea style={StyledObject.storeMenuTextAreaField} type="text" name="storedescription" value={storedescription} onChange={event => setStoreDescription(event.target.value)}></textarea>
                             </span>
-                        </div>
+                        </div> */}
 
                             {/* <div style={StyledObject.storeMenuContentFields}>
                               <span style={StyledObject.storeMenuFirstField}>Full Name</span>
@@ -403,12 +409,12 @@ const submitData =(e)=>{
                    
                    </form>
                         </LeftSide>
-                        <RightSide>
+                        {/* <RightSide>
                             <p>Upload your business registration document</p>
                             <SizedBox>
                             <div style={StyledObject.chooseFileButton}>Choose File</div>
                             </SizedBox>
-                        </RightSide>
+                        </RightSide> */}
                     </FormWrapper>
                     <div style={{padding: '50px'}}>
                         <span style={{fontSize: "16px", color: "#717171", fontFamily: "Nunito", paddingLeft: "50px"}}>

@@ -5,8 +5,7 @@ import styled from "styled-components";
 import facebook from "../../assets/facebook.png";
 import instagram from "../../assets/instagram.png";
 import tiktok from "../../assets/tiktok.png";
-import applestore from "../../assets/appstore.png";
-import play from "../../assets/play.png";
+
 
 const Footer = () => {
   const ListHeadWrapper = styled.li`
@@ -41,28 +40,7 @@ const Footer = () => {
               <li style={StyledObject.li}>Privacy Policy</li>
             </ul>
           </div>
-          <div style={StyledObject.linkUpElements}>
-            <div style={StyledObject.appBtn}>
-              <img src={applestore} alt="applestore" />
-              <span>
-                <span>Available on</span>
-                <br />
-                <span style={{ fontWeight: "700", fontSize: "1rem" }}>
-                  App Store
-                </span>
-              </span>
-            </div>
-            <div style={StyledObject.appBtn}>
-              <img src={play} alt="playstore" />
-              <span>
-                <span>Available on</span>
-                <br />
-                <span style={{ fontWeight: "700", fontSize: "1rem" }}>
-                  Google Play
-                </span>
-              </span>
-            </div>
-          </div>
+         
         </div>
         <div style={StyledObject.socialMediaIconsWrapper}>
           <span style={StyledObject.socialMediaIcons}>

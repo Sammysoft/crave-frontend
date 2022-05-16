@@ -17,7 +17,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     axios
-      .get(`${api}merchant/dashoard`, {
+      .get(`${api}merchant/dashboard`, {
         headers: {
           Authorization: token,
         },

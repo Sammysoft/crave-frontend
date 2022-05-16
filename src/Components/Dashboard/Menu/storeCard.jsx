@@ -14,12 +14,22 @@ let StoreTagline = styled.span`
 `;
 
 const StoreCard = ({ storetagline, storelocation, storelogo, storename }) => {
+  console.log(storelogo)
   return (
     <>
       <div style={StyledObject.storeCardWrapper}>
         <div style={StyledObject.storeCardLeftSide}>
           {" "}
-          <img src={"/assets/img/fristos.png"} alt={"store logo"} />
+          {storelogo != null ? (
+            <img
+              src={storelogo}
+              height={"100px"}
+              width={"100px"}
+              alt={"store logo"}
+            />
+          ) : (
+            <></>
+          )}
         </div>
         <div style={StyledObject.storeCardRightSide}>
           <div style={StyledObject.storeCardRightSideWrapper}>

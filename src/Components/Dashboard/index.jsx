@@ -49,7 +49,7 @@ const Dashboard = () => {
         setStorename(response.data.storename);
         setStorelocation(response.data.storelocation);
         setStoredescription(response.data.storedescription);
-        setStorelogo(response.data.storelogo);
+        setStorelogo(response.data.storeprofileimage);
         setStoretagline(response.data.storetagline);
         setStoreId(response.data._id);
         setOrders(response.data.orders);
