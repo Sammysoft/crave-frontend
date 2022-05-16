@@ -6,7 +6,7 @@ a:hover{
       display: none;
     }
     #mobile{
-        display:none;
+        display:block;
         width: 100vw;
         height: 100vh;
     }
