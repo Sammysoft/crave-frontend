@@ -1,7 +1,7 @@
 a:hover{
     cursor: pointer
 }
-/* @media only screen and (max-width: 960px) {
+@media only screen and (max-width: 960px) {
     #root {
       display: none;
     }
@@ -23,7 +23,7 @@ a:hover{
     #mobile{
         display: none
     }
-} */
+}
 span:hover{
     cursor: pointer;
 }
