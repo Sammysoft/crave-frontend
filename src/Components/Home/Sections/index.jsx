@@ -13,21 +13,19 @@ import Footer from "./footer";
 import applestore from "../../assets/appstore.png";
 import play from "../../assets/play.png";
 import getapp from "../../assets/getapp.png";
-import getappback from '../../assets/getapp-back.png'
-
+import getappback from "../../assets/getapp-back.png";
 
 let GetAppSection = styled.div`
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: row;
-background-image: url(${getappback});
-background-repeat: no-repeat;
-background-size: 100%;
-background-position: center;
-`
-
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-image: url(${getappback});
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+`;
 
 const Section = () => {
   var displayText = [
@@ -78,6 +76,37 @@ const Section = () => {
         <GetAppSection>
           <img src={getapp} alt="getapp" />
           <div style={StyledObject.linkUpElements}>
+            <div>
+              <span
+                style={{
+                  color: "black",
+                  fontWeight: "700",
+                  fontFamily: "Nunito",
+                }}
+              >
+                Get 
+              </span>
+
+              <span
+                style={{
+                  color: "#DB0000",
+                  fontWeight: "700",
+                  fontFamily: "Nunito",
+                }}
+              > 
+                  CRAVE
+              </span>
+
+              <span
+                style={{
+                  color: "black",
+                  fontWeight: "700",
+                  fontFamily: "Nunito",
+                }}
+              >
+                  App
+              </span>
+            </div>
             <div style={StyledObject.appBtn}>
               <img src={applestore} alt="applestore" />
               <span>
