@@ -27,6 +27,23 @@ let GetAppSection = styled.div`
   background-position: center;
 `;
 
+let GetAppText = styled.span`
+color: #DB0000;
+font-weight: 700;
+font-size: 1.5rem;
+font-family: Nunito;
+&:before{
+  content: " Get ";
+  color: black;
+  font-weight: 700
+}
+&:after {
+  content: " App";
+  color: black;
+  font-weight: 700
+}
+`;
+
 const Section = () => {
   var displayText = [
     {
@@ -77,27 +94,19 @@ const Section = () => {
           <img src={getapp} alt="getapp" />
           <div style={StyledObject.linkUpElements}>
             <div>
-              <span
+              {/* <span
                 style={{
                   color: "black",
                   fontWeight: "700",
                   fontFamily: "Nunito",
                 }}
               >
-                Get 
-              </span>
+                Get
+              </span> */}
 
-              <span
-                style={{
-                  color: "#DB0000",
-                  fontWeight: "700",
-                  fontFamily: "Nunito",
-                }}
-              > 
-                  CRAVE
-              </span>
+              <GetAppText>CRAVE</GetAppText>
 
-              <span
+              {/* <span
                 style={{
                   color: "black",
                   fontWeight: "700",
@@ -105,7 +114,7 @@ const Section = () => {
                 }}
               >
                   App
-              </span>
+              </span> */}
             </div>
             <div style={StyledObject.appBtn}>
               <img src={applestore} alt="applestore" />

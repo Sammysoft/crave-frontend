@@ -1,7 +1,6 @@
 import React from "react";
 import { StyledObject } from "../StyleObject";
 import { Link } from "react-router-dom";
-import arrow from "../../Components/Dashboard/MenuList/svg/arrow-right.svg";
 
 const NavBar = () => {
   return (
@@ -22,7 +21,9 @@ const NavBar = () => {
             <span style={StyledObject.navItemContent1}>Become A Merchant</span>
           </Link>
           {/* <span style={StyledObject.navItemContent2}>Get the App</span>
-                        <span style={StyledObject.navItemContent3}>Join Us <img src={arrow} alt="svg arrow"/></span> */}
+          <span style={StyledObject.navItemContent3}>
+            Join Us <img src={arrow} alt="svg arrow" />
+          </span> */}
         </span>
       </div>
     </>
