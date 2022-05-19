@@ -2,10 +2,74 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { StyledObject } from "../../StyleObject";
-
 import Swal from "sweetalert2";
+import url from "../../config";
+let api = url.api;
 
 const LeftBar = () => {
+  let token = localStorage.getItem("token");
+  let navigate = useNavigate();
+  const [storename, setStorename] = useState("");
+  const [storelocation, setStorelocation] = useState("");
+  const [storedescription, setStoredescription] = useState("");
+  const [storelogo, setStorelogo] = useState("");
+  const [storetagline, setStoretagline] = useState("");
+  const [storeid, setStoreId] = useState("");
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    fetch(`${api}merchant/dashboard`, {
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then(async (res) => {
+        let response = await res.json();
+        console.log(res);
+        setStorename(response.data.storename);
+        setStorelocation(response.data.storelocation);
+        setStoredescription(response.data.storedescription);
+        setStorelogo(response.data.storeprofileimage);
+        setStoretagline(response.data.storetagline);
+        setStoreId(response.data._id);
+        setOrders(response.data.orders);
+
+        if (!response.data) {
+          navigate("/merchant/auth");
+          Swal.fire({
+            icon: "warning",
+            title: "Sorry.",
+            text: "Please Login",
+          });
+        } else if (response.data.bankdetails.length == 0) {
+          navigate("/settings/bank");
+          Swal.fire({
+            icon: "info",
+            text: "Please Complete Your Bank Settings",
+            title: "Add Bank Details",
+          });
+        } else if (
+          !response.data.storetagline ||
+          !response.data.storeprofileimage
+        ) {
+          navigate("/settings/");
+          Swal.fire({
+            icon: "info",
+            text: "Help Customers Identify you better and upload all relevant documents",
+            title: "Setup Your Store Completely",
+          });
+        }
+      })
+      .catch((error) => {
+        navigate("/merchant/auth");
+        Swal.fire({
+          title: "Oops!",
+          icon: "warning",
+          text: "Try Login again",
+        });
+      });
+  }, []);
+
   const thisRoute = useLocation().pathname;
 
   const Navigate = useNavigate();
@@ -24,12 +88,15 @@ const LeftBar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
 
   useEffect(() => {
-    if(thisRoute === "/settings/" || thisRoute === "/settings/profile" || thisRoute === '/settings/bank' ){
-        setToggleMenu(true);
-    }else{
-      setToggleMenu(false)
+    if (
+      thisRoute === "/settings/" ||
+      thisRoute === "/settings/profile" ||
+      thisRoute === "/settings/bank"
+    ) {
+      setToggleMenu(true);
+    } else {
+      setToggleMenu(false);
     }
-  
   }, []);
 
   return (
@@ -40,7 +107,7 @@ const LeftBar = () => {
         </div>
         <div style={StyledObject.listWrapper}>
           <ul style={StyledObject.unorderedList}>
-            <span style={{ width: "100%" }}>
+            <span style={{ width: "100%", backgroundColor: "red" }}>
               <span
                 style={
                   thisRoute === "/dashboard"
@@ -171,7 +238,8 @@ const LeftBar = () => {
                   className="bi bi-clipboard-data"
                   viewBox="0 0 16 16"
                   style={
-                    thisRoute === "/lists/"
+                    thisRoute === "/lists/" ||
+                    thisRoute === "/lists/updatemeal/*"
                       ? { color: "#DB0000" }
                       : { color: "rgba(26, 26, 25, 1)" }
                   }
@@ -244,7 +312,6 @@ const LeftBar = () => {
                           paddingLeft: "5px",
                         }
                   }
-                 
                 >
                   Settings
                 </span>
@@ -531,14 +598,14 @@ const LeftBar = () => {
               </li>
             </span>
 
-            <span style={{ display: "flex", flexDirection: "row" }}>
+            <span style={{ display: "flex", flexDirection: "row", marginTop: "4vh"  }}>
               <li
                 style={StyledObject.list}
                 onClick={() => {
                   logout();
                 }}
               >
-                <span style={{ padding: "5px" }}> Logout</span>
+                <span style={{ padding: "5px"}}> Logout</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

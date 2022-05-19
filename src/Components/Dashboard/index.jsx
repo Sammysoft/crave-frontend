@@ -68,11 +68,11 @@ const Dashboard = () => {
             text: "Please Complete Your Bank Settings",
             title: "Add Bank Details",
           });
-        } else if (!response.data.storetagline) {
+        } else if (!response.data.storetagline || !response.data.storeprofileimage ) {
           navigate("/settings/");
           Swal.fire({
             icon: "info",
-            text: "Help Customers Identify you better",
+            text: "Help Customers Identify you better and upload all relevant documents",
             title: "Setup Your Store Completely",
           });
         } else {

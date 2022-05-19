@@ -2,8 +2,12 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { StyledObject } from "../StyleObject";
 import Swal from "sweetalert2";
+import styled from "styled-components";
 import url from "../config";
 let api = url.api;
+
+
+
 
 const UserProfileMenu = ({ fullname, password, email, phonenumber, id }) => {
   const [updatedfullname, setFullName] = useState(fullname);
@@ -46,7 +50,11 @@ const UserProfileMenu = ({ fullname, password, email, phonenumber, id }) => {
             title: "Oops!",
           });
         });
-    } else if (oldpassword == null && firstpassword == null && secondpassword == null) {
+    } else if (
+      oldpassword == null &&
+      firstpassword == null &&
+      secondpassword == null
+    ) {
       const payload = {
         email: updatedemail,
         password: firstpassword,

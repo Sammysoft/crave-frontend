@@ -1,19 +1,79 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { StyledObject } from "../../../StyleObject";
 import axios from "axios";
 import url from "../../../config";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import { category } from "../../../categories";
+import { storage } from "../../../../firebase";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  getStorage,
+} from "firebase/storage";
+import { v4 } from "uuid";
 let api = url.api;
 
 const Menu = () => {
+  const inputRef = useRef();
+
+  const uploadFile = () => {
+    if (pickFile == null) {
+      return null;
+    } else {
+      const imageRef = ref(getStorage(), `images/${pickFile.name + v4()}`);
+      const uploadTask = uploadBytesResumable(imageRef, pickFile);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+        },
+        (error) => {
+          Swal.fire({
+            icon: "error",
+            text: "Sorry, could not add image picture, try again later",
+            title: "Oops!",
+          });
+        },
+        () => {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log("File available at", downloadURL);
+            Swal.fire({
+              icon: "success",
+              text: "Successfully uploaded your profile picture",
+              title: "Image Uploaded To The Cloud",
+              timmer: 1500,
+              position: "top-right",
+            });
+            setMealImage(downloadURL);
+          });
+        }
+      );
+    }
+  };
+
   //details to make the addMeal API endpoint
   const [storename, setStorename] = useState("");
 
   //details for the meals
   const [mealname, setMealName] = useState("");
-  const [mealpicture, setMealPicture] = useState("");
+  const [mealimage, setMealImage] = useState(null);
   const [description, setMealDescription] = useState("");
   const [mealincredients, setMealIncredients] = useState("");
   const [price, setPrice] = useState("");
@@ -22,6 +82,7 @@ const Menu = () => {
   const [selectedCategory, setCategory] = useState("Meal");
   const [tags, setTags] = useState("");
   const [itemunit, setItemUnit] = useState("");
+  const [pickFile, setPickFile] = useState(null);
 
   const token = localStorage.getItem("token");
   let Navigate = useNavigate();
@@ -42,6 +103,7 @@ const Menu = () => {
     let store = storename;
     const payload = {
       mealname,
+      mealimage,
       description,
       price,
       tags,
@@ -55,8 +117,7 @@ const Menu = () => {
     axios
       .post(`${api}merchant/meal/add/`, payload)
       .then((res) => {
-        Navigate("/lists");
-        console.log(res.data.data);
+        Navigate("/lists/");
         Swal.fire({
           title: "Done",
           icon: "success",
@@ -67,7 +128,7 @@ const Menu = () => {
         Swal.fire({
           text: "Oops!",
           icon: "warning",
-          text: error,
+          text: error.reponse.data.msg,
         });
       });
   };
@@ -100,10 +161,46 @@ const Menu = () => {
             <div style={StyledObject.inputWrapper}>
               <span style={StyledObject.inputLabel}>Meal Picture:</span>
               <span style={StyledObject.choosePicture}>
-                <div style={StyledObject.imageWrapper}>
-                  <div style={StyledObject.chooseButton}>Choose</div>
+                <div
+                  style={{
+                    width: "55%",
+                    height: "100%",
+                    border: "1px solid black",
+                    borderStyle: "dotted",
+                    textAlign: "center",
+                    alignItems: "center",
+                    backgroundImage: `url(${mealimage})`,
+                    backgroundPosition: "contain",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "100% 100%",
+                  }}
+                >
+                  <div
+                    style={StyledObject.chooseButton}
+                    onClick={() => inputRef.current.click()}
+                  >
+                    Choose
+                  </div>
+                  <input
+                    ref={inputRef}
+                    style={{ display: "none" }}
+                    type="file"
+                    accept="application/multipart"
+                    id="customeFile"
+                    onChange={(event) => setPickFile(event.target.files[0])}
+                    name="storeLogo"
+                  />
+                  <input
+                    style={{ display: "none" }}
+                    type="text"
+                    id="customeFile"
+                    value={mealimage}
+                    name="storeLogo"
+                  />
                 </div>
-                <span style={{ color: "#FEC72E" }}>Change</span>
+                <span style={{ color: "#FEC72E" }} onClick={() => uploadFile()}>
+                  Upload
+                </span>
               </span>
             </div>
 

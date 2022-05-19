@@ -102,7 +102,7 @@ const Menu = ({ storename }) => {
                           <tr style={StyledObject.tr}>
                             <td style={StyledObject.te}>
                               <ProductDetails
-                                imgSrc="/assets/img/1.png"
+                                imgSrc={item.mealimage}
                                 firstText={item.mealname}
                                 secondText={_toNumber(item.price)}
                                 thirdText={item.category}
