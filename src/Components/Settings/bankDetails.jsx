@@ -12,6 +12,7 @@ const BankDetails = () => {
   const [storename, setStoreName] = useState("");
   const [bankdetails, setBankDetails] = useState([]);
 
+  
   useEffect(() => {
     axios
       .get(`${api}merchant/dashboard`, {
