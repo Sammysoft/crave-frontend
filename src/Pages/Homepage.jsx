@@ -12,7 +12,7 @@ const Homepage = () =>{
         <>
         <div style={StyledObject.homeBodySection}>
                 <Home />
-               <Sections />
+                <Sections />
                </div>
 
         </>

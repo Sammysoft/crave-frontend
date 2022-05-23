@@ -286,7 +286,7 @@ export const StyledObject = {
   carouselItem: {
     position: "absolute",
     color: "white",
-    marginTop: "45vh",
+    marginTop: "60vh",
     padding: "20px",
     fontFamily: "Nunito",
   },

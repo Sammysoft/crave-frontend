@@ -16,14 +16,10 @@ const NavBar = () => {
               textDecorationLine: "none",
               color: "#BD0000",
             }}
-            to="/merchant/home"
+            to="/merchant/"
           >
-            <span style={StyledObject.navItemContent1}>Become A Merchant</span>
+            <span style={StyledObject.navItemContent1}>Accounts</span>
           </Link>
-          {/* <span style={StyledObject.navItemContent2}>Get the App</span>
-          <span style={StyledObject.navItemContent3}>
-            Join Us <img src={arrow} alt="svg arrow" />
-          </span> */}
         </span>
       </div>
     </>

@@ -18,8 +18,9 @@ const override = css`
 `;
 
 let RegisterWrapper = styled.div`
+margin-top: 10vh;
   width: 100%;
-  height: 70vh;
+  height: 100vh;
 `;
 
 const TextWrap = styled.div`
