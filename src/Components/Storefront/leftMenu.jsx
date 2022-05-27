@@ -5,7 +5,6 @@ import heart from "../Dashboard/MenuList/svg/heart.svg";
 import share from "../Dashboard/MenuList/svg/share.svg";
 import chat from "../Dashboard/MenuList/svg/chat.svg";
 import chevronright from "../Dashboard/MenuList/svg/chevron-right.svg";
-import photo from "../assets/left_image.png";
 import checkmark from "../Dashboard/MenuList/svg/checkmark.svg";
 import cancelmark from "../Dashboard/MenuList/svg/cancelmark.svg";
 import axios from "axios";
@@ -39,8 +38,19 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
   const Meat = useRef();
   const Grill = useRef();
 
+  const categorizedMeal = (val) => {
+    setCategorized(
+      meals.filter((el) => {
+        console.log(val);
+        return el.category === val;
+      })
+    );
+    console.log(categorized);
+  };
+
   const [clickedEvent, setClickedEvent] = useState(Main);
   const [meals, setMeals] = useState([]);
+  const [categorized, setCategorized] = useState([]);
 
   useEffect(() => {
     axios
@@ -129,6 +139,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 Main.current.style.borderBottom = "7px solid #DB0000";
                 setClickedEvent(Main);
+                categorizedMeal("Main");
               }}
               style={{
                 borderBottom: "7px solid #E5E5E5",
@@ -146,6 +157,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 Breakfast.current.style.borderBottom = "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Breakfast);
+                categorizedMeal("Breakfast");
               }}
             >
               Breakfast
@@ -157,6 +169,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 Grill.current.style.borderBottom = "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Grill);
+                categorizedMeal("Grill");
               }}
             >
               Grill
@@ -170,6 +183,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 Pastries.current.style.borderBottom = "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Pastries);
+                categorizedMeal("Pastries");
               }}
             >
               Pastries
@@ -181,6 +195,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 Salad.current.style.borderBottom = "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Salad);
+                categorizedMeal("Salad");
               }}
             >
               Salad
@@ -193,6 +208,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                   "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Intercontinental);
+                categorizedMeal("Intercontinental");
               }}
             >
               Intercontinental
@@ -204,6 +220,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 Natives.current.style.borderBottom = "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Natives);
+                categorizedMeal("Natives");
               }}
             >
               Natives
@@ -215,6 +232,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 Refresh.current.style.borderBottom = "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Refresh);
+                categorizedMeal("Refresh");
               }}
             >
               Refresh
@@ -226,6 +244,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 Meat.current.style.borderBottom = "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Meat);
+                categorizedMeal("Meat");
               }}
             >
               Meat lovers
@@ -237,6 +256,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 Platter.current.style.borderBottom = "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Platter);
+                categorizedMeal("Platter");
               }}
             >
               Platter
@@ -251,18 +271,33 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 Sweet.current.style.borderBottom = "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Sweet);
+                categorizedMeal("Sweet");
               }}
             >
               Sweet Tooth
             </span>
           </div>
           <div style={{ minHeight: "50vh", width: "100%" }}>
-            {meals.length === 0 ? (
-              <></>
+            {categorized.length === 0 ? (
+              <>
+                <div
+                  style={{
+                    width: "50%",
+                    height: "40vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <span style={{ textAlign: "center" }}>
+                    No Meal In This Category
+                  </span>
+                </div>
+              </>
             ) : (
               <>
                 {" "}
-                {meals.map((meal) => {
+                {categorized.map((meal) => {
                   return (
                     <>
                       <div
@@ -279,6 +314,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                             alt="meal photo"
                             width="100px"
                             height="100px"
+                            style={{borderRadius:"5px"}}
                           />
                         </span>
                         <span
@@ -290,7 +326,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                           }}
                         >
                           <span>{meal.mealname}</span>
-                          <span>N {meal.price}</span>
+                          <span>N{meal.price}</span>
                           <span>Ratings</span>
                         </span>
                       </div>
