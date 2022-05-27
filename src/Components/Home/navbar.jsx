@@ -1,6 +1,7 @@
 import React from "react";
 import { StyledObject } from "../StyleObject";
 import { Link } from "react-router-dom";
+import arrow from "../Dashboard/MenuList/svg/arrow-right.svg"
 
 const NavBar = () => {
   return (
@@ -10,20 +11,30 @@ const NavBar = () => {
           <img src={"/assets/logo.png"} alt="" />
         </span>
         <span style={StyledObject.navItem}>
-          <Link
+        <Link
             style={{
               textDecoration: "none",
               textDecorationLine: "none",
               color: "#BD0000",
             }}
-            to="/merchant/home"
+            to="/merchant/"
           >
-            <span style={StyledObject.navItemContent1}>Become A Merchant</span>
-          </Link>
-          {/* <span style={StyledObject.navItemContent2}>Get the App</span>
           <span style={StyledObject.navItemContent3}>
             Join Us <img src={arrow} alt="svg arrow" />
-          </span> */}
+          </span>
+          </Link>
+          <Link
+            style={{
+              textDecoration: "none",
+              textDecorationLine: "none",
+              color: "black"
+            }}
+            to="/merchant/home"
+          >
+            <span style={StyledObject.navItemContent1}>For Merchants</span>
+          </Link>
+          {/* <span style={StyledObject.navItemContent2}>Get the App</span> */}
+
         </span>
       </div>
     </>

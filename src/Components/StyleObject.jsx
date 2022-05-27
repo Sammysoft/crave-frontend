@@ -217,9 +217,50 @@ export const StyledObject = {
     alignSelf: "center",
     fontFamily: "Nunito",
   },
+  dashboardNav: {
+    fontFamily: "Nunito",
+    color: "#1A1A19",
+    flex: 1,
+    backgroundColor: "white",
+    width: "100%",
+    padding: "3%",
+    boxShadow: "3px 4px 6px  #888888",
+  },
+  button: {
+    color: "#FEB52E",
+    padding: "5px 15px 5px 15px",
+    borderRadius: "5px",
+    backgroundColor: "#FFFFFF",
+    border: "2px solid #BD0000",
+    backgroundImage:
+      "linear-gradient(50deg,rgba(189, 0, 0, 1), rgba(254, 181, 46, 1))",
+    backgroundSize: "100%",
+    backgroundRepeat: "repeat",
+    webkitBackgroundClip: "text",
+    webkitTextFillColor: "transparent",
+  },
+  left: {
+    flex: 4,
+    fontWeight: "900",
+  },
+  right: {
+    flex: 2,
+    right: "20px",
+    width: "50%",
+  },
+  wrap: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    width: "100%",
+  },
+  btnWrapper: {
+    float: "left",
+  },
   navItemContent1: {
     float: "right",
-    marginRight: "50px",
+    marginRight: "30px",
+    marginTop: "10px",
     cursor: "pointer",
     fontFamily: "Nunito",
     fontWeight: "700",
@@ -231,7 +272,8 @@ export const StyledObject = {
     fontWeight: "700",
   },
   navItemContent3: {
-    marginLeft: "50px",
+    float: "right",
+    marginRight: "25px",
     cursor: "pointer",
     backgroundColor: "#BD0000",
     padding: "8px",
@@ -276,9 +318,9 @@ export const StyledObject = {
     paddingBottom: "15%",
   },
   carouseltemWrapper: {
-    width: "50%",
+    width: "100%",
     position: "relative",
-    height: "50%",
+    height: "100%",
     textAlign: "left",
     padding: "10px",
     fontFamily: "Nunito",
@@ -289,6 +331,69 @@ export const StyledObject = {
     marginTop: "60vh",
     padding: "20px",
     fontFamily: "Nunito",
+  },
+  storeCarouselItem: {
+    position: "absolute",
+    color: "white",
+    marginTop: "60vh",
+    padding: "30px",
+    fontFamily: "Nunito",
+    display: "grid",
+    gridTemplateColumns: "auto auto auto",
+    gap:"1vw",
+    alignItems: "center",
+    justifyContent:"space-between"
+  },
+  storeLeftMenuAboutWrapper:{
+
+  },
+  storefrontMenu:{
+    display:"grid",
+    gridTemplateColumns: "60% 40%",
+    gap: "10px",
+    width: "100vw",
+    position: "relative",
+    margin: "auto",
+    top: "100vh",
+    fontFamily: "Nunito",
+    height: "fit-content",
+    padding: "0px 40px"
+  },
+  aboutSectionText: {
+    width: "90%"
+  },
+  storefrontrightMenu:{
+    padding: "5px",
+    width: "100%",
+  },
+  aboutSectionButtons:{
+    margin: "3vh 0px 3vh 0px",
+    width: "50%",
+    display:"flex",
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  storefrontReservationWrapper:{
+    backgroundColor: "white",
+    boxShadow: "0px 4px 10px 4px rgba(121, 121, 130, 0.15)",
+    borderRadius: "5px",
+    minHeight: '50vh',
+    padding: "5vh",
+    width: "100%",
+    margin: "5vh 2px 5vh 2px",
+    position: "relative",
+    maxHeight: "fit-content"
+  },
+  storefrontReservationWrapper2:{
+    backgroundColor: "white",
+    boxShadow: "0px 4px 10px 4px rgba(121, 121, 130, 0.15)",
+    borderRadius: "5px",
+    minHeight: '50vh',
+    padding: "2vh",
+    width: "100%",
+    margin: "5vh 2px 5vh 2px",
+    position: "relative",
+    maxHeight: "fit-content"
   },
   homeBodySection: {
     background:
@@ -569,6 +674,12 @@ export const StyledObject = {
     border: "none",
     width: "90%",
     borderBottom: "1px dashed #717171",
+    padding: "0px",
+  },
+  inputReservationField: {
+    border: "none",
+    width: "100%",
+    borderBottom: "2px dashed #717171",
     padding: "0px",
   },
   storeMenuInputField2: {

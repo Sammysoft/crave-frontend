@@ -1,20 +1,78 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import LeftBar from "../LeftBar";
 import NavBar from "../NavBar/Navbar";
 import Menu from "./Menu";
 import { StyledObject } from "../../StyleObject";
 import { useLocation }from 'react-router-dom';
 import { useNavigate } from "react-router";
-import { category } from "../../categories";
+import { category, size, unit } from "../../categories";
 import axios from 'axios';
 import url from '../../config';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { storage } from "../../../firebase";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  getStorage,
+} from "firebase/storage";
+import { v4 } from "uuid";
 let api = url.api
 
 
 
 const UpdateMeal = (  ) => {
   const location = useLocation();
+  const inputRef = useRef();
+
+  const uploadFile = () => {
+    if (pickFile == null) {
+      return null;
+    } else {
+      const imageRef = ref(getStorage(), `images/${pickFile.name + v4()}`);
+      const uploadTask = uploadBytesResumable(imageRef, pickFile);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+        },
+        (error) => {
+          Swal.fire({
+            icon: "error",
+            text: "Sorry, could not add image picture, try again later",
+            title: "Oops!",
+          });
+        },
+        () => {
+
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log("File available at", downloadURL);
+            Swal.fire({
+              icon: "success",
+              text: "Successfully uploaded your profile picture",
+              title: "Image Uploaded To The Cloud",
+              timmer: 1500,
+              position: "top-right",
+            });
+            setMealImage(downloadURL);
+          });
+        }
+      );
+    }
+  };
+
 
     useEffect(()=>{
       const idFromUrl = location.pathname.toString();
@@ -32,9 +90,10 @@ const UpdateMeal = (  ) => {
             setPrice(res.data.data.price)
             setStoreName(res.data.data.store)
             setStoreId(res.data.data._id)
+            setMealPicture(res.data.data.mealimage)
         }).catch(error => {
             console.log(error);
-            Swal.fire({      
+            Swal.fire({
                 icon: 'warning',
                 text: error.response.data.msg,
                 title: 'Oops!, Something went wrong'
@@ -48,13 +107,14 @@ const UpdateMeal = (  ) => {
   const [mealincredients, setMealIncredients] = useState("");
   const [price, setPrice] = useState("");
   const [stockcount, setStockCount] = useState("");
-  const [size, setSize] = useState("");
+  const [selectedSize, setSize] = useState("");
   const [selectedCategory, setCategory] = useState("");
   const [tags, setTags] = useState("");
   const [itemunit, setItemUnit] = useState("");
   const [storename, setStoreName] = useState("");
   const [storeid, setStoreId]= useState("");
-
+  const [pickFile, setPickFile] = useState(null);
+  const [mealimage, setMealImage] = useState(null);
 
   const token = localStorage.getItem("token");
   let Navigate = useNavigate();
@@ -70,9 +130,9 @@ const updateMeal = () =>{
       itemunit,
       stockcount,
       category: selectedCategory,
-      size,
+      size:  selectedSize,
       mealincredients,
-
+      mealimage
     };
     axios
       .post(`${api}merchant${payloadPath}`, payload)
@@ -94,7 +154,7 @@ const updateMeal = () =>{
     }
 
 
-   
+
 
   return (
     <>
@@ -129,10 +189,46 @@ const updateMeal = () =>{
             <div style={StyledObject.inputWrapper}>
               <span style={StyledObject.inputLabel}>Meal Picture:</span>
               <span style={StyledObject.choosePicture}>
-                <div style={StyledObject.imageWrapper}>
-                  <div style={StyledObject.chooseButton}>Choose</div>
+                <div
+                  style={{
+                    width: "55%",
+                    height: "100%",
+                    border: "1px solid black",
+                    borderStyle: "dotted",
+                    textAlign: "center",
+                    alignItems: "center",
+                    backgroundImage: `url(${mealpicture})`,
+                    backgroundPosition: "contain",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "100% 100%",
+                  }}
+                >
+                  <div
+                    style={StyledObject.chooseButton}
+                    onClick={() => inputRef.current.click()}
+                  >
+                    Choose
+                  </div>
+                  <input
+                    ref={inputRef}
+                    style={{ display: "none" }}
+                    type="file"
+                    accept="application/multipart"
+                    id="customeFile"
+                    onChange={(event) => setPickFile(event.target.files[0])}
+                    name="storeLogo"
+                  />
+                  <input
+                    style={{ display: "none" }}
+                    type="text"
+                    id="customeFile"
+                    value={mealimage}
+                    name="storeLogo"
+                  />
                 </div>
-                <span style={{ color: "#FEC72E" }}>Change</span>
+                <span style={{ color: "#FEC72E" }} onClick={() => uploadFile()}>
+                  Upload
+                </span>
               </span>
             </div>
 
@@ -217,36 +313,75 @@ const updateMeal = () =>{
               <span style={StyledObject.inputLabel}>Size:</span>
               <div style={StyledObject.bottomInputWrapper}>
                 <span style={StyledObject.inputField}>
-                  <input
-                    type="text"
-                    name="size"
-                    value={size}
-                    onChange={(e) => setSize(e.target.value)}
-                    style={{
-                      width: "100%",
-                      border: "1px solid grey",
-                      borderStyle: "dotted",
-                      borderRadius: "5px",
-                      padding: "10px",
-                    }}
-                  />
+                <select
+                  style={{
+                    width: "100%",
+                    border: "1px solid grey",
+                    borderStyle: "dotted",
+                    borderRadius: "5px",
+                    padding: "10px",
+                    backgroundColor: "transparent",
+                  }}
+                  value={selectedSize}
+                  onChange={(e) => {
+                    setSize(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                >
+                  {size.map((item, id) => {
+                    return (
+                      <option
+                        key={id}
+                        value={item}
+                        style={{
+                          width: "100%",
+                          border: "1px solid grey",
+                          borderStyle: "dotted",
+                          borderRadius: "5px",
+                          padding: "10px",
+                        }}
+                      >
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
                 </span>
                 <div style={StyledObject.bottomInputWrapper}>
                   <span style={StyledObject.inputLabel}>Item Unit:</span>
                   <span style={StyledObject.inputField}>
-                    <input
-                      type="text"
-                      name="itemunit"
-                      value={itemunit}
-                      onChange={(e) => setItemUnit(e.target.value)}
-                      style={{
-                        width: "100%",
-                        border: "1px solid grey",
-                        borderStyle: "dotted",
-                        borderRadius: "5px",
-                        padding: "10px",
-                      }}
-                    />
+                  <select
+                  style={{
+                    width: "100%",
+                    border: "1px solid grey",
+                    borderStyle: "dotted",
+                    borderRadius: "5px",
+                    padding: "10px",
+                    backgroundColor: "transparent",
+                  }}
+                  value={itemunit}
+                  onChange={(e) => {
+                    setItemUnit(e.target.value);
+                  }}
+                >
+                  {unit.map((item, id) => {
+                    return (
+                      <option
+                        key={id}
+                        value={item}
+                        style={{
+                          width: "100%",
+                          border: "1px solid grey",
+                          borderStyle: "dotted",
+                          borderRadius: "5px",
+                          padding: "10px",
+                        }}
+                      >
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
                   </span>
                 </div>
               </div>

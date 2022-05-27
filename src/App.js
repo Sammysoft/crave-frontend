@@ -20,6 +20,7 @@ import BankDetails from "./Components/Settings/bankDetails";
 import UpdateMeal from "./Components/Dashboard/MenuList/updateMeal";
 import Advert from "./Components/Dashboard/adverts";
 import  MerchantPage from './Pages/MerchantLandingPage'
+import Storefront from "./Pages/StorefrontPage";
 
 const App = () => {
   return (
@@ -57,6 +58,7 @@ const App = () => {
         <Route path="/history" element={<History messages={<Messages />} />} />
         <Route path="/adverts" element={<Advert />} />
         <Route path="/merchant/home/" element={<MerchantPage/>}/>
+        <Route path="/merchant/storefront/" element={<Storefront />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

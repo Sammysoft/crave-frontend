@@ -17,7 +17,6 @@ const LeftBar = () => {
   const [storeid, setStoreId] = useState("");
   const [orders, setOrders] = useState([]);
 
-
   useEffect(() => {
     fetch(`${api}merchant/dashboard`, {
       headers: {
@@ -87,6 +86,7 @@ const LeftBar = () => {
   };
 
   const [toggleMenu, setToggleMenu] = useState(true);
+  const [toggleMenu1, setToggleMenu1] = useState(true);
 
   useEffect(() => {
     if (
@@ -97,6 +97,16 @@ const LeftBar = () => {
       setToggleMenu(true);
     } else {
       setToggleMenu(false);
+    }
+    if (
+      thisRoute === "/orders/" ||
+      thisRoute === "/orders/missed" ||
+      thisRoute === "/orders/inaccurate" ||
+      thisRoute === "/orders/cancelled"
+    ) {
+      setToggleMenu1(true);
+    } else {
+      setToggleMenu1(false);
     }
   }, []);
 
@@ -185,48 +195,199 @@ const LeftBar = () => {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  className="bi bi-minecart"
+                  className="bi bi-gear"
                   viewBox="0 0 16 16"
                   style={
-                    thisRoute === "/orders/cancelled" ||
+                    thisRoute === "/orders/" ||
                     thisRoute === "/orders/missed" ||
+                    thisRoute === "/orders/cancelled" ||
                     thisRoute === "/orders/inaccurate"
                       ? { color: "#DB0000" }
                       : { color: "rgba(26, 26, 25, 1)" }
                   }
                 >
-                  <path d="M4 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8-1a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM.115 3.18A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 14 12H2a.5.5 0 0 1-.491-.408l-1.5-8a.5.5 0 0 1 .106-.411zm.987.82 1.313 7h11.17l1.313-7H1.102z" />
+                  <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                  <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
                 </svg>
-                <Link
-                  to="/orders/missed"
-                  activeClass="active"
-                  style={{
-                    textDecoration: "none",
-                    textDecoarationLine: "none",
+                <span
+                  onClick={(e) => {
+                    setToggleMenu1(!toggleMenu1);
                   }}
+                  style={
+                    thisRoute === "/orders/" ||
+                    thisRoute === "/orders/missed" ||
+                    thisRoute === "/orders/cancelled" ||
+                    thisRoute === "/orders/inaccurate"
+                      ? {
+                          textDecorationLine: "none",
+                          textDecoration: "none",
+                          color: "#DB0000",
+                          paddingLeft: "5px",
+                        }
+                      : {
+                          textDecorationLine: "none",
+                          textDecoration: "none",
+                          color: "rgba(26, 26, 25, 1)",
+                          paddingLeft: "5px",
+                        }
+                  }
                 >
-                  <span
-                    style={
-                      thisRoute === "/orders/cancelled" ||
-                      thisRoute === "/orders/missed" ||
-                      thisRoute === "/orders/inaccurate"
-                        ? {
-                            color: "#DB0000",
-                            textDecorationLine: "none",
-                            textDecoration: "none",
-                            paddingLeft: "5px",
+                  Orders
+                </span>
+
+                {toggleMenu1 === true ? (
+                  <>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-chevron-up"
+                      viewBox="0 0 16 16"
+                      style={
+                        thisRoute === "/orders/" ||
+                        thisRoute === "/orders/missed" ||
+                        thisRoute === "/orders/cancelled" ||
+                        thisRoute === "/orders/inaccurate"
+                          ? { color: "#DB0000", marginLeft: "10px" }
+                          : { color: "rgba(26, 26, 25, 1)", marginLeft: "10px" }
+                      }
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
+                      />
+                    </svg>
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-chevron-down"
+                      viewBox="0 0 16 16"
+                      style={
+                        thisRoute === "/orders/" ||
+                        thisRoute === "/orders/missed" ||
+                        thisRoute === "/orders/cancelled" ||
+                        thisRoute === "/orders/inaccurate"
+                          ? { color: "#DB0000", marginLeft: "10px" }
+                          : { color: "rgba(26, 26, 25, 1)", marginLeft: "10px" }
+                      }
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                      />
+                    </svg>
+                  </>
+                )}
+                {toggleMenu1 === true ? (
+                  <>
+                    <div
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "right",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <span
+                        style={{
+                          marginLeft: "20px",
+                          padding: "5px",
+                          fontSize: "16px",
+                        }}
+                        onClick={() => {
+                          setToggleMenu1(true);
+                        }}
+                      >
+                        <Link
+                          style={
+                            thisRoute === "/orders/missed"
+                              ? {
+                                  textDecorationLine: "none",
+                                  textDecoration: "none",
+                                  color: "#DB0000",
+                                }
+                              : {
+                                  textDecorationLine: "none",
+                                  textDecoration: "none",
+                                  color: "rgba(26, 26, 25, 1)",
+                                }
                           }
-                        : {
-                            color: "rgba(26, 26, 25, 1)",
-                            textDecorationLine: "none",
-                            textDecoration: "none",
-                            paddingLeft: "5px",
+                          to="/orders/missed"
+                        >
+                          Missed
+                        </Link>
+                      </span>
+                      <span
+                        style={{
+                          marginLeft: "20px",
+                          padding: "5px",
+                          fontSize: "16px",
+                        }}
+                        onClick={() => {
+                          setToggleMenu1(true);
+                        }}
+                      >
+                        <Link
+                          style={
+                            thisRoute === "/orders/inaccurate"
+                              ? {
+                                  textDecorationLine: "none",
+                                  textDecoration: "none",
+                                  color: "#DB0000",
+                                }
+                              : {
+                                  textDecorationLine: "none",
+                                  textDecoration: "none",
+                                  color: "rgba(26, 26, 25, 1)",
+                                }
                           }
-                    }
-                  >
-                    Orders
-                  </span>
-                </Link>
+                          to="/orders/inaccurate"
+                        >
+                          {" "}
+                          Inaccurate
+                        </Link>
+                      </span>
+                      <span
+                        style={{
+                          marginLeft: "20px",
+                          padding: "5px",
+                          fontSize: "16px",
+                        }}
+                        onClick={() => {
+                          setToggleMenu1(true);
+                        }}
+                      >
+                        <Link
+                          style={
+                            thisRoute === "/orders/cancelled"
+                              ? {
+                                  textDecorationLine: "none",
+                                  textDecoration: "none",
+                                  color: "#DB0000",
+                                }
+                              : {
+                                  textDecorationLine: "none",
+                                  textDecoration: "none",
+                                  color: "rgba(26, 26, 25, 1)",
+                                }
+                          }
+                          to="/orders/cancelled"
+                        >
+                          {" "}
+                          Cancelled
+                        </Link>
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <>{""}</>
+                )}
               </li>
             </span>
             <span style={{ display: "flex", flexDirection: "row" }}>
@@ -599,14 +760,20 @@ const LeftBar = () => {
               </li>
             </span>
 
-            <span style={{ display: "flex", flexDirection: "row", marginTop: "4vh"  }}>
+            <span
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginTop: "4vh",
+              }}
+            >
               <li
                 style={StyledObject.list}
                 onClick={() => {
                   logout();
                 }}
               >
-                <span style={{ padding: "5px"}}> Logout</span>
+                <span style={{ padding: "5px" }}> Logout</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

@@ -94,27 +94,7 @@ const Section = () => {
           <img src={getapp} alt="getapp" />
           <div style={StyledObject.linkUpElements}>
             <div>
-              {/* <span
-                style={{
-                  color: "black",
-                  fontWeight: "700",
-                  fontFamily: "Nunito",
-                }}
-              >
-                Get
-              </span> */}
-
               <GetAppText>CRAVE</GetAppText>
-
-              {/* <span
-                style={{
-                  color: "black",
-                  fontWeight: "700",
-                  fontFamily: "Nunito",
-                }}
-              >
-                  App
-              </span> */}
             </div>
             <div style={StyledObject.appBtn}>
               <img src={applestore} alt="applestore" />

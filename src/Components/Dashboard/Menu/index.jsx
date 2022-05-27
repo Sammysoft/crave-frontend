@@ -23,7 +23,7 @@ const Menu = ({
     labels: UserData.map((data) => data.amount),
     datasets: [
       {
-        label: "Sales",
+        // label: "Sales",
         data: UserData.map((data) => data.Month),
         backgroundColor: [
           "rgba(113, 0, 0, 1)",
@@ -39,7 +39,10 @@ const Menu = ({
           above: "#fbe5d2",
           below: "#fbe5d2",
         },
-        tension: 0.1,
+        tension: 0.5,
+        pointBorder: false,
+        pointRadius: 0,
+        borderColor: "#DB0000"
       },
     ],
   });

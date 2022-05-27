@@ -4,7 +4,7 @@ import axios from "axios";
 import url from "../../../config";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
-import { category } from "../../../categories";
+import { category, size, unit } from "../../../categories";
 import { storage } from "../../../../firebase";
 import {
   ref,
@@ -50,8 +50,7 @@ const Menu = () => {
           });
         },
         () => {
-          // Handle successful uploads on complete
-          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("File available at", downloadURL);
             Swal.fire({
@@ -78,7 +77,7 @@ const Menu = () => {
   const [mealincredients, setMealIncredients] = useState("");
   const [price, setPrice] = useState("");
   const [stockcount, setStockCount] = useState("");
-  const [size, setSize] = useState("");
+  const [selectedSize, setSize] = useState("");
   const [selectedCategory, setCategory] = useState("Meal");
   const [tags, setTags] = useState("");
   const [itemunit, setItemUnit] = useState("");
@@ -247,7 +246,7 @@ const Menu = () => {
               <div style={StyledObject.bottomInputWrapper}>
                 <span style={StyledObject.inputField}>
                   <input
-                    type="text"
+                    type="number"
                     name="Price"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
@@ -285,36 +284,76 @@ const Menu = () => {
               <span style={StyledObject.inputLabel}>Size:</span>
               <div style={StyledObject.bottomInputWrapper}>
                 <span style={StyledObject.inputField}>
-                  <input
-                    type="text"
-                    name="size"
-                    value={size}
-                    onChange={(e) => setSize(e.target.value)}
-                    style={{
-                      width: "100%",
-                      border: "1px solid grey",
-                      borderStyle: "dotted",
-                      borderRadius: "5px",
-                      padding: "10px",
-                    }}
-                  />
+                <select
+                  style={{
+                    width: "100%",
+                    border: "1px solid grey",
+                    borderStyle: "dotted",
+                    borderRadius: "5px",
+                    padding: "10px",
+                    backgroundColor: "transparent",
+                  }}
+                  value={selectedSize}
+                  onChange={(e) => {
+                    setSize(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                >
+                  {size.map((item, id) => {
+                    return (
+                      <option
+                        key={id}
+                        value={item}
+                        style={{
+                          width: "100%",
+                          border: "1px solid grey",
+                          borderStyle: "dotted",
+                          borderRadius: "5px",
+                          padding: "10px",
+                        }}
+                      >
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
                 </span>
                 <div style={StyledObject.bottomInputWrapper}>
                   <span style={StyledObject.inputLabel}>Item Unit:</span>
                   <span style={StyledObject.inputField}>
-                    <input
-                      type="text"
-                      name="itemunit"
-                      value={itemunit}
-                      onChange={(e) => setItemUnit(e.target.value)}
-                      style={{
-                        width: "100%",
-                        border: "1px solid grey",
-                        borderStyle: "dotted",
-                        borderRadius: "5px",
-                        padding: "10px",
-                      }}
-                    />
+                  <select
+                  style={{
+                    width: "100%",
+                    border: "1px solid grey",
+                    borderStyle: "dotted",
+                    borderRadius: "5px",
+                    padding: "10px",
+                    backgroundColor: "transparent",
+                  }}
+                  value={itemunit}
+                  onChange={(e) => {
+                    setItemUnit(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                >
+                  {unit.map((item, id) => {
+                    return (
+                      <option
+                        key={id}
+                        value={item}
+                        style={{
+                          width: "100%",
+                          border: "1px solid grey",
+                          borderStyle: "dotted",
+                          borderRadius: "5px",
+                          padding: "10px",
+                        }}
+                      >
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
                   </span>
                 </div>
               </div>
