@@ -72,6 +72,8 @@ const LeftBar = () => {
             text: "Please complete you KYC settings by uploading your busines document",
             title: "KYC settings incomplete!",
           });
+        }else{
+          return null
         }
       })
       .catch((error) => {

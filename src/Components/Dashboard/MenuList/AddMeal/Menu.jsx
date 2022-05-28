@@ -109,7 +109,7 @@ const Menu = () => {
       itemunit,
       stockcount,
       category: selectedCategory,
-      size,
+      size: selectedSize,
       mealincredients,
       store,
     };
