@@ -15,6 +15,7 @@ const StoreSettings = () => {
   const [storeid, setStoreId] = useState("");
   const [storedescription, setStoreDescription] = useState("");
   const [storeprofileimage, setStoreProfileImage] = useState("")
+  const [storedocument, setStoreDocument] = useState(null)
 
   useEffect(() => {
     axios
@@ -24,12 +25,14 @@ const StoreSettings = () => {
         },
       })
       .then((res) => {
+        console.log(res)
         setStoreTagLine(res.data.data.storetagline);
         setStoreName(res.data.data.storename);
         setStoreId(res.data.data._id);
         setStoreLocation(res.data.data.storelocation);
         setStoreDescription(res.data.data.storedescription);
-        setStoreProfileImage(res.data.data.storeprofileimage)
+        setStoreProfileImage(res.data.data.storeprofileimage);
+        setStoreDocument(res.data.data.documents)
       });
   }, []);
 
@@ -46,6 +49,7 @@ const StoreSettings = () => {
             storedescription={storedescription}
             storetagline={storetagline}
             storeprofileimage = {storeprofileimage}
+            document={storedocument}
           />
         </div>
       </div>

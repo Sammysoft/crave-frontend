@@ -46,7 +46,7 @@ const LeftBar = () => {
           Swal.fire({
             icon: "info",
             text: "Please Complete Your Bank Settings",
-            title: "Add Bank Details",
+            title: "Add Bank Details!",
           });
         } else if (
           !response.data.storetagline ||
@@ -56,7 +56,21 @@ const LeftBar = () => {
           Swal.fire({
             icon: "info",
             text: "Help Customers Identify you better and upload all relevant documents",
-            title: "Setup Your Store Completely",
+            title: "Setup Your Store Completely!",
+          });
+        }else if(!response.data.profile.phonenumber || !response.data.profile.email){
+          navigate("/settings/profile");
+          Swal.fire({
+            icon: "info",
+            text: "Please complete your user profile settings",
+            title: "User profile incomplete!",
+          });
+        }else if (!response.data.documents){
+          navigate("/settings/");
+          Swal.fire({
+            icon: "info",
+            text: "Please complete you KYC settings by uploading your busines document",
+            title: "KYC settings incomplete!",
           });
         }
       })

@@ -6,7 +6,7 @@ import Image2 from "./image_left-merchant";
 import Image1 from "../../assets/left_image1.png";
 import Image4 from "../../assets/left_image3.png";
 import { StyledObject } from "../../StyleObject";
-import Merchant from "./register_merchant";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Newsletter from "./newsletter";
 import Footer from "./footer";
@@ -27,7 +27,7 @@ let GetAppSection = styled.div`
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
-  margin-top:40vh;
+  margin-top: 40vh;
 `;
 
 let GetAppText = styled.span`
@@ -90,8 +90,8 @@ const Section = () => {
           image={<Image2 />}
           head={displayText[3].head}
           body={displayText[3].body}
+          joinusbutton={<JoinUsButton />}
         />
-        {/* <Merchant /> */}
 
         <GetAppSection>
           <img src={getapp} alt="getapp" />
@@ -130,3 +130,41 @@ const Section = () => {
 };
 
 export default Section;
+
+export const JoinUsButton = () => {
+  return (
+    <>
+      <div
+        style={{
+          width: "100%",
+          height: "20vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+      >
+        <Link
+          to="/merchant/"
+          style={{
+            color: "none",
+            textDecorationLine: "none",
+            textDecoration: "none",
+          }}
+        >
+          <span
+            style={{
+              fontWeight: "700",
+              color: "#DB0000",
+              backgroundColor: "#FEB52E",
+              padding: "5px 10px",
+              borderRadius: "5px",
+            }}
+          >
+            Join Us
+          </span>
+        </Link>
+      </div>
+    </>
+  );
+};

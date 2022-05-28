@@ -2,7 +2,7 @@ import React from "react";
 import { StyledObject } from "../../StyleObject";
 import styled from "styled-components";
 
-const MoreDetail = ({ image, imageSrc, body, head }) => {
+const MoreDetail = ({ image, imageSrc, body, head, joinusbutton }) => {
   const DetailsHeadWrapper = styled.p`
     background-image: linear-gradient(
       50deg,
@@ -25,7 +25,8 @@ const MoreDetail = ({ image, imageSrc, body, head }) => {
             <>
               <DetailsHeadWrapper>{head}</DetailsHeadWrapper>
               <br />
-              <span>{body}</span>
+              <span>{body}</span><br/>
+              {joinusbutton}
             </>
           </div>
         ) : (
@@ -40,7 +41,8 @@ const MoreDetail = ({ image, imageSrc, body, head }) => {
             <>
               <DetailsHeadWrapper>{head}</DetailsHeadWrapper>
               <br />
-              <span>{body}</span>
+              <span>{body}</span><br/>
+              {joinusbutton}
             </>
           </div>
         ) : (

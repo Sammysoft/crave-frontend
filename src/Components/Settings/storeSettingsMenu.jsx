@@ -5,6 +5,7 @@ import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import Swal from "sweetalert2";
 import styled from "styled-components";
+import sendcheck from "../Dashboard/MenuList/svg/sendcheck.svg"
 import url from "../config";
 import { storage } from "../../firebase";
 import {
@@ -70,6 +71,7 @@ const Menu = ({
   storedescription,
   storelocation,
   storeprofileimage,
+  document,
 }) => {
   const inputRef = useRef();
   const uploadDoc = useRef();
@@ -77,7 +79,7 @@ const Menu = ({
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const [isLoadingDocument, setIsLoadingDocument] = useState(false);
   const [store, setStoreName] = useState();
-  const [storedocument, setStoreDocument] = useState(null);
+  const [storedocument, setStoreDocument] = useState(document);
   const [pickDoc, setPickDoc] = useState(null);
   const [storeupdatedprofileimage, setStoreProfileImage] =
     useState(storeprofileimage);
@@ -108,14 +110,14 @@ const Menu = ({
 
   let [color, setColor] = useState("#DB0000");
   let id = storeid;
-  console.log(pickDoc);
   useEffect(() => {
-    setLoading(true);
+    console.log(document);
     setStoreDescription(storedescription);
     setStoreTagLine(storetagline);
     setStoreLocation(storelocation);
     setStoreName(storename);
     setStoreProfileImage(storeprofileimage);
+    setStoreDocument(document);
     setLoading(false);
   }, [
     storetagline,
@@ -123,6 +125,7 @@ const Menu = ({
     storelocation,
     storedescription,
     storeprofileimage,
+    document,
   ]);
 
   const uploadDocument = () => {
@@ -136,8 +139,6 @@ const Menu = ({
       uploadTask.on(
         "state_changed",
         (snapshot) => {
-          // Observe state change events such as progress, pause, and resume
-          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
@@ -154,8 +155,6 @@ const Menu = ({
           alert("Sorry, upload denied at the moment, Please try again later!");
         },
         () => {
-          // Handle successful uploads on complete
-          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("File available at", downloadURL);
             Swal.fire({
@@ -167,6 +166,7 @@ const Menu = ({
             });
             setStoreDocument(downloadURL);
             setIsLoadingDocument(false);
+            console.log(storedocument)
           });
         }
       );
@@ -184,8 +184,6 @@ const Menu = ({
       uploadTask.on(
         "state_changed",
         (snapshot) => {
-          // Observe state change events such as progress, pause, and resume
-          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
@@ -202,8 +200,6 @@ const Menu = ({
           alert("Sorry, upload denied at the moment, Please try again later!");
         },
         () => {
-          // Handle successful uploads on complete
-          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("File available at", downloadURL);
             Swal.fire({
@@ -255,6 +251,7 @@ const Menu = ({
   let sundaycloseRef = useRef();
 
   const updateProfile = () => {
+    setLoading(true);
     const businesspayload = {
       saturday: saturday + " - " + saturdayclose,
       monday: monday + " - " + mondayclose,
@@ -278,6 +275,7 @@ const Menu = ({
       .post(`${api}merchant/settings/store/${id}`, payload)
       .then((res) => {
         console.log(res);
+        setLoading(false);
         Swal.fire({
           icon: "success",
           timmer: "3000",
@@ -643,7 +641,7 @@ const Menu = ({
                             style={StyledObject.closedButton}
                             onClick={(e) => {
                               mondayRef.current.value = "";
-                              setMondayClose("Closed")
+                              setMondayClose("Closed");
                               mondayRef.current.style.display = "none";
                               mondaycloseRef.current.style.display = "none";
                             }}
@@ -687,7 +685,7 @@ const Menu = ({
                             onClick={() => {
                               tuesdayRef.current.value = "";
                               tuesdaycloseRef.current.style.display = "none";
-                              setTuesdayClose("Closed")
+                              setTuesdayClose("Closed");
                               tuesdayRef.current.style.display = "none";
                             }}
                           >
@@ -773,7 +771,7 @@ const Menu = ({
                             onClick={() => {
                               thursdayRef.current.value = "";
                               thursdayRef.current.style.display = "none";
-                              setThursdayClose("Closed")
+                              setThursdayClose("Closed");
                               thursdaycloseRef.current.style.display = "none";
                             }}
                           >
@@ -816,7 +814,7 @@ const Menu = ({
                             onClick={() => {
                               fridayRef.current.value = "";
                               fridaycloseRef.current.style.display = "none";
-                              setFridayClose("Closed")
+                              setFridayClose("Closed");
                               fridayRef.current.style.display = "none";
                             }}
                           >
@@ -860,7 +858,7 @@ const Menu = ({
                               saturdayRef.current.value = "";
                               saturdaycloseRef.current.style.display = "none";
                               saturdayRef.current.style.display = "none";
-                              setSaturdayClose("Closed")
+                              setSaturdayClose("Closed");
                             }}
                           >
                             Closed
@@ -900,7 +898,7 @@ const Menu = ({
                             onClick={() => {
                               sundayRef.current.value = "";
                               sundayRef.current.style.display = "none";
-                              setSundayClose("Closed")
+                              setSundayClose("Closed");
                               sundaycloseRef.current.style.display = "none";
                             }}
                           >
@@ -1006,44 +1004,54 @@ const Menu = ({
                 <>
                   <br />
                   <div>
-                    {pickDoc != null ? (
+                    {!storedocument ? (
                       <>
                         {" "}
-                        <object
-                          data={URL.createObjectURL(pickDoc)}
-                          type="application/pdf"
-                          width={"100%"}
-                          style={{ margin: "auto" }}
-                        ></object>
-                        <span
-                          style={{
-                            color: "#FEB52E",
-                            float: "right",
-                            padding: " 2px 10px",
-                          }}
-                          onClick={() => {
-                            uploadDocument();
-                          }}
-                        >
-                          Upload
-                        </span>
+                        {pickDoc != null ? (
+                          <>
+                            {" "}
+                            <object
+                              data={URL.createObjectURL(pickDoc)}
+                              type="application/pdf"
+                              width={"100%"}
+                              style={{ margin: "auto" }}
+                            ></object>
+                            <span
+                              style={{
+                                color: "#FEB52E",
+                                float: "right",
+                                padding: " 2px 10px",
+                              }}
+                              onClick={() => {
+                                uploadDocument();
+                              }}
+                            >
+                              Upload
+                            </span>
+                          </>
+                        ) : (
+                          <>
+                            {" "}
+                            <div
+                              style={{
+                                border: "1px solid #1A1A19",
+                                padding: "2px",
+                                borderRadius: "3px",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                uploadDoc.current.click();
+                              }}
+                            >
+                              Choose File
+                            </div>
+                          </>
+                        )}
                       </>
                     ) : (
                       <>
-                        {" "}
-                        <div
-                          style={{
-                            border: "1px solid #1A1A19",
-                            padding: "2px",
-                            borderRadius: "3px",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => {
-                            uploadDoc.current.click();
-                          }}
-                        >
-                          Choose File
-                        </div>
+                        <div style={{textAlign: "center", fontWeight:"100"}}>Document Uploaded <br/><br/>
+                        <img src={sendcheck} alt="sendcheck" height="50px" width="50px"/></div>
                       </>
                     )}
                   </div>

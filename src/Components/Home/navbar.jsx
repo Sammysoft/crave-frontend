@@ -33,8 +33,6 @@ const NavBar = () => {
           >
             <span style={StyledObject.navItemContent1}>For Merchants</span>
           </Link>
-          {/* <span style={StyledObject.navItemContent2}>Get the App</span> */}
-
         </span>
       </div>
     </>
