@@ -1,6 +1,5 @@
 import React from "react";
-import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
+import Chart from "react-apexcharts"
 import { StyledObject } from "../../StyleObject";
 import styled from "styled-components";
 
@@ -21,7 +20,19 @@ const Customers = ({ chartData, orders }) => {
         <br />
         <hr style={{ color: "#FEB52E" }} />
         <>
-          <Doughnut data={chartData} style={{ width: "70%", height: "70%" }} />
+        <Chart
+            type="donut"
+            width={"100%"}
+            height={"100%"}
+            series={[50, 200]}
+            options={{
+              labels: [
+                "New",
+                "Old"
+              ],
+
+            }}
+          />
         </>
       </div>
     </>

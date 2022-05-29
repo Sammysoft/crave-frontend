@@ -35,7 +35,7 @@ const UpdateMeal = () => {
     } else {
       const imageRef = ref(getStorage(), `images/${pickFile.name + v4()}`);
       const uploadTask = uploadBytesResumable(imageRef, pickFile);
-      setIsLoadingImage(true)
+      setIsLoadingImage(true);
       uploadTask.on(
         "state_changed",
         (snapshot) => {
@@ -59,7 +59,7 @@ const UpdateMeal = () => {
           });
         },
         () => {
-          setIsLoadingImage(false)
+          setIsLoadingImage(false);
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("File available at", downloadURL);
             Swal.fire({
@@ -82,6 +82,7 @@ const UpdateMeal = () => {
     axios
       .get(`${api}merchant/meal/getMealToUpdate/${extractedId}`)
       .then((res) => {
+        console.log(res);
         setCategory(res.data.data.category);
         setMealName(res.data.data.mealname);
         setMealIncredients(res.data.data.mealincredients);
@@ -93,7 +94,7 @@ const UpdateMeal = () => {
         setPrice(res.data.data.price);
         setStoreName(res.data.data.store);
         setStoreId(res.data.data._id);
-        setMealPicture(res.data.data.mealimage);
+        setMealImage(res.data.data.mealimage);
       })
       .catch((error) => {
         console.log(error);
@@ -105,6 +106,7 @@ const UpdateMeal = () => {
       });
   }, []);
   //details for the meals
+
   const [mealname, setMealName] = useState("");
   const [mealpicture, setMealPicture] = useState("");
   const [description, setMealDescription] = useState("");
@@ -121,6 +123,7 @@ const UpdateMeal = () => {
   const [mealimage, setMealImage] = useState(null);
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const [loading, setLoading] = useState(false);
+  let [color, setColor] = useState("#DB0000");
 
   const token = localStorage.getItem("token");
   let Navigate = useNavigate();
@@ -236,12 +239,13 @@ const UpdateMeal = () => {
                                 borderStyle: "dotted",
                                 textAlign: "center",
                                 alignItems: "center",
-                                backgroundImage: `url(${mealpicture})`,
+                                backgroundImage: `url(${mealimage})`,
                                 backgroundPosition: "contain",
                                 backgroundRepeat: "no-repeat",
                                 backgroundSize: "100% 100%",
                               }}
                             >
+                          
                               <div
                                 style={StyledObject.chooseButton}
                                 onClick={() => inputRef.current.click()}

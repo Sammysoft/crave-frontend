@@ -220,7 +220,7 @@ const LeftMenu = ({ storedescription, storebusinesshours, storename }) => {
                 Natives.current.style.borderBottom = "7px solid #DB0000";
                 clickedEvent.current.style.borderBottom = "7px solid #E5E5E5";
                 setClickedEvent(Natives);
-                categorizedMeal("Natives");
+                categorizedMeal("Native");
               }}
             >
               Natives

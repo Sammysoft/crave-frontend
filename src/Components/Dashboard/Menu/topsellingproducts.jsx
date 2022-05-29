@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
+import Chart from "react-apexcharts";
 import { Divider } from "@material-ui/core";
 import { StyledObject } from "../../StyleObject";
 import url from "../../config";
@@ -26,7 +25,30 @@ const TopSellingProducts = ({ chartData, orders }) => {
         <br />
         <hr style={{ color: "#FEB52E" }} />
         <>
-          <Pie data={chartData} style={{ width: "70%", height: "70%" }} />
+       
+          <Chart
+            type="pie"
+            width={"100%"}
+            height={"100%"}
+            series={[100, 200, 300, 200, 50, 500, 20, 400, 200, 230, 30, 40]}
+            options={{
+              labels: [
+                "Basmati Rice",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "June",
+                "July",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec",
+              ],
+
+            }}
+          />
         </>
       </div>
     </>

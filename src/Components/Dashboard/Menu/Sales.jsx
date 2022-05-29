@@ -1,6 +1,5 @@
 import React from "react";
-import { Bar, Line } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
+import Chart from "react-apexcharts";
 import { StyledObject } from "../../StyleObject";
 import styled from "styled-components";
 
@@ -21,7 +20,50 @@ const Sales = ({ chartData, orders }) => {
         <br />
         <hr style={{ color: "#FEB52E" }} />
         <>
-          <Line data={chartData} />
+          <Chart
+            type="area"
+            width={"100%"}
+            height={"100%"}
+            series={[
+              {
+                name: "Company",
+                color:"#DB0000",
+                data: [100, 200, 300, 200, 50, 500, 20, 400, 200, 230, 30, 40],
+              },
+            ]}
+            options={{
+              dataLabels:{
+                show:false
+              },
+              xaxis: {
+                tickPlacement: "on",
+                categories: [
+                  "Jan",
+                  "Feb",
+                  "Mar",
+                  "Apr",
+                  "May",
+                  "June",
+                  "July",
+                  "Aug",
+                  "Sept",
+                  "Oct",
+                  "Nov",
+                  "Dec",
+                ],
+              },
+              yaxis: {
+                labels: {
+                  formatter: (val) => {
+                    return `N${val}`;
+                  },
+                },
+              },
+              legend: {
+                show: false,
+              },
+            }}
+          />
         </>
       </div>
     </>
