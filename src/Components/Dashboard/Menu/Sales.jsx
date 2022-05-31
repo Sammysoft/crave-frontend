@@ -28,7 +28,7 @@ const Sales = ({ chartData, orders }) => {
               {
                 name: "Company",
                 color:"#DB0000",
-                data: [100, 200, 300, 200, 50, 500, 20, 400, 200, 230, 30, 40],
+                data: [100, 200, 300, 200, 50, 500, 20],
               },
             ]}
             options={{
@@ -38,11 +38,6 @@ const Sales = ({ chartData, orders }) => {
               xaxis: {
                 tickPlacement: "on",
                 categories: [
-                  "Jan",
-                  "Feb",
-                  "Mar",
-                  "Apr",
-                  "May",
                   "June",
                   "July",
                   "Aug",

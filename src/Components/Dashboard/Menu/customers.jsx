@@ -26,9 +26,10 @@ const Customers = ({ chartData, orders }) => {
             height={"100%"}
             series={[50, 200]}
             options={{
+              colors:["#FEB52E", "#DB0000"],
               labels: [
-                "New",
-                "Old"
+                "New Customers",
+                "Returning Customers"
               ],
 
             }}

@@ -25,28 +25,29 @@ const TopSellingProducts = ({ chartData, orders }) => {
         <br />
         <hr style={{ color: "#FEB52E" }} />
         <>
-       
           <Chart
             type="pie"
             width={"100%"}
             height={"100%"}
-            series={[100, 200, 300, 200, 50, 500, 20, 400, 200, 230, 30, 40]}
+            series={[100, 200, 300, 200, 50]}
             options={{
+              colors: [
+                "#feb019",
+                "#DB0000",
+                "#FEB52E",
+                "#de8423",
+                "#de4a14",
+                "#e6b335",
+                "#5c3d11",
+                "#8a6058"
+              ],
               labels: [
                 "Basmati Rice",
-                "Feb",
-                "Mar",
-                "Apr",
-                "May",
-                "June",
-                "July",
-                "Aug",
-                "Sept",
-                "Oct",
-                "Nov",
-                "Dec",
+                "Jambalaya Rice",
+                "Plantain and Egg",
+                "Meat Sauce",
+                "Ice Cream",
               ],
-
             }}
           />
         </>
