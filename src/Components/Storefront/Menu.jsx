@@ -12,11 +12,11 @@ const StorefrontMenu = ({ storeamenities, storebusinesshours, storedescription, 
           storebusinesshours={storebusinesshours}
           storedescription={storedescription}
           storename={storename}
-        />
-        <RightMenu />
-      </div>
-    </>
-  );
+      />
+      <RightMenu />
+    </div>
+  </>
+);
 };
 
 export default StorefrontMenu;
